@@ -69,9 +69,7 @@
 
 #### Component Tree
 
-> Use this section to display the structure of how your React components are being rendered. This should show the parent to child relation between you components. In other words, show which components are rendering the other components. Include a link to your component tree
-
-[Component Tree](https://gist.git.generalassemb.ly/davidtwhitlatch/414107e2560ae0bb65e233570f2fe056#file-component-tree-png)
+[Component Tree](https://whimsical.com/VE1HrMyfLYez38YKWj4Hij)
 ![Component Hierarchy](./assets/component-hierarchy.png)
 
 #### Component Architecture
@@ -136,9 +134,7 @@ src
 
 #### ERD Model
 
-> Use this section to display an image of a computer generated ERD model. You can use draw.io, Lucidchart or another ERD tool.
-
-[ERD Sample](https://drive.google.com/file/d/1kLyQTZqfcA4jjKWQexfEkG2UspyclK8Q/view)
+![ERD Sample](./assets/weTinerary.png)
 <br>
 
 ***

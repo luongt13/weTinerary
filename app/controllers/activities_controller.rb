@@ -1,20 +1,21 @@
 class ActivitiesController < ApiController
     skip_before_action :authenticate_user!, only: [:index, :show]
-    before_action :set_actvity, only: [:show, :update, :destroy]
+    before_action :set_activity, only: [:show, :update, :destroy]
 
     def index
-        @day = Day.find(params[:id])
+        @day = Day.find(params[:day_id])
         @activities = @day.activities
         render json: @activities
     end
 
-    def show
-        render json: @activity
-    end
+    # def show
+    #     render json: @activity
+    # end
 
     def create
-        @activity = Activity.new(activity_params)
-        if activity.save
+        @day = Day.find(params[:day_id])
+        @activity = @day.activities.build(activity_params)
+        if @activity.save
             render json: @activity
         else
             render json: @activity.errors
@@ -31,7 +32,7 @@ class ActivitiesController < ApiController
         
     def destroy
         @activity.destroy
-        render json: {message: "#{@activity.type} has been deleted"}
+        render json: {message: "#{@activity.name} has been deleted"}
     end
 
     private
@@ -41,6 +42,6 @@ class ActivitiesController < ApiController
     end
 
     def activity_params
-        params.require(:activity).permit(:name, :location, :description)
+        params.require(:activity).permit(:name, :location)
     end
 end

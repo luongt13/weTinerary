@@ -1,16 +1,17 @@
 class TripsController < ApiController
-    skip_before_action :authenticate_user!, only: [:index, :show, :all_trips]
+    skip_before_action :authenticate_user!, only: [:all_trips, :show]
     before_action :set_trip, only: [:show, :update, :destroy]
 
+    #user logged in
     def index
-        # @trips = Trip.all
-        # render json: @trips, include: [:user]
-        @trips = User.find(params[:user_id]).trips
+        @trips = current_user.trips
+        render json: @trips, include: [:user]
+        # @trips = User.find(params[:user_id]).trips
     end
-
+    #all trips in database
     def all_trips
         @trips = Trip.all
-        render json: @trips, include: [:user]
+        render json: @trips
     end
 
     def show
@@ -18,11 +19,11 @@ class TripsController < ApiController
     end
 
     def create
-        # @trip = current_user.trips.new(trip_params)
-        @trip = Trip.new(trip_params)
-        # @trip.user_id = @current_user
-        if trip.save
-            render json: @trip
+        # @user = User.find(params[:user_id])
+        # render json: @user
+        @trip = current_user.trips.build(trip_params)
+        if @trip.save
+            render json: @trip, status: :created
         else
             render json: @trip.errors
         end

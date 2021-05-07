@@ -8,9 +8,9 @@ class DaysController < ApiController
         render json: @days, include: [:activities]
     end
 
-    def show
-        render json: @day, include: [:activities]
-    end
+    # def show
+    #     render json: @day, include: [:activities]
+    # end
 
     def create
         @trip = Trip.find(params[:trip_id])

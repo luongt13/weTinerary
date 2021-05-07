@@ -3,7 +3,8 @@ class ActivitiesController < ApiController
     before_action :set_actvity, only: [:show, :update, :destroy]
 
     def index
-        @activities = Activity.all
+        @day = Day.find(params[:id])
+        @activities = @day.activities
         render json: @activities
     end
 
@@ -25,6 +26,7 @@ class ActivitiesController < ApiController
             render json: @activity
         else 
             render json: @activity.errors
+        end
     end
         
     def destroy

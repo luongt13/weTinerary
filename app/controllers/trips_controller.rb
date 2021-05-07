@@ -6,7 +6,6 @@ class TripsController < ApiController
     def index
         @trips = current_user.trips
         render json: @trips, include: [:user]
-        # @trips = User.find(params[:user_id]).trips
     end
     #all trips in database
     def all_trips
@@ -19,8 +18,6 @@ class TripsController < ApiController
     end
 
     def create
-        # @user = User.find(params[:user_id])
-        # render json: @user
         @trip = current_user.trips.build(trip_params)
         if @trip.save
             render json: @trip, status: :created

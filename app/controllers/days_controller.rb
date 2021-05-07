@@ -3,8 +3,9 @@ class DaysController < ApiController
     before_action :set_day, only: [:show, :update, :destroy]
 
     def index
-        @days = Day.all
-        render json: @days
+        @trip = Trip.find(params[:trip_id])
+        @days = @trip.days
+        render json: @days, include: [:activities]
     end
 
     def show
@@ -12,9 +13,11 @@ class DaysController < ApiController
     end
 
     def create
-        @day = Day.new(day_params)
-        if day.save
-            render json: @day
+        @trip = Trip.find(params[:trip_id])
+        @day = @trip.days.build(day_params)
+        # @day = Day.new(day_params)
+        if @day.save
+            render json: @day, include: [:activities]
         else
             render json: @day.errors
         end
@@ -25,11 +28,12 @@ class DaysController < ApiController
             render json: @day
         else 
             render json: @day.errors
+        end
     end
         
     def destroy
         @day.destroy
-        render json: {message: "Day #{@day.day} has been deleted"}
+        render json: {message: "Day #{@day.trip_day} has been deleted"}
     end
 
     private
@@ -39,6 +43,6 @@ class DaysController < ApiController
     end
 
     def day_params
-        params.require(:day).permit(:day)
+        params.require(:day).permit(:trip_day, activities_attributes: [:name, :location])
     end
 end

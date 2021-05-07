@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-  resources :trips do
-    resources :days do
-      resources :activities
-    end
+  # resources :users do 
+  resources :users do 
+    resources :trips
   end
 
+    resources :trips do
+      resources :days do
+      end
+  end
+
+  get "/trips", to: "trips#all_trips"
 
   devise_for :users, controllers: { registrations: 'registrations' }
   namespace :api do

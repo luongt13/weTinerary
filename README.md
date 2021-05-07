@@ -45,6 +45,7 @@
 |      React       | front-end|
 |   React Router   | front-end routing |
 |   Ruby on Rails  | back-end |
+|      Devise      | user auth |
 |      Axios       | handle requests |
 
 <br>

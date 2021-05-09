@@ -8,9 +8,9 @@ class DaysController < ApiController
         render json: @days, include: [:activities]
     end
 
-    # def show
-    #     render json: @day, include: [:activities]
-    # end
+    def show
+        render json: @day, include: [:activities]
+    end
 
     def create
         @trip = Trip.find(params[:trip_id])
@@ -24,8 +24,8 @@ class DaysController < ApiController
     end
 
     def update
-        if @day.update(day_params)
-            render json: @day
+        if @day.update(update_params)
+            render json: @day, include: [:activities]
         else 
             render json: @day.errors
         end
@@ -44,5 +44,8 @@ class DaysController < ApiController
 
     def day_params
         params.require(:day).permit(:trip_day, activities_attributes: [:name, :location])
+    end
+    def update_params
+        params.require(:day).permit(:trip_day, activities_attributes: [:id, :name, :location])
     end
 end

@@ -12,6 +12,11 @@
 
 .trip-description {
     text-align: left;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    /* height: 50vh; */
+    margin: 20px;
 }
 
 .day-list {
@@ -25,7 +30,9 @@
     padding: 10px;
     margin: 10px 10px 20px 10px;
     border: 2px solid black;
-    background-color: yellowgreen;
+    border-radius: 5px;
+    background-color: white;
+
 }
 
 .day {
@@ -35,4 +42,17 @@
 .day-details {
     flex-grow: 1;
     margin-left: 10px;
+}
+
+.add-button {
+    align-self: flex-end;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.add {
+    background-color: black;
+    border-radius: 50%;
+    padding: 20px;
 }

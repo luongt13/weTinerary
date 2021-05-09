@@ -1,14 +1,16 @@
 .nav {
-    background-color: #0E6655;
+    /* background-color: #0E6655; */
+    background-color: black;
     height: 80px;
     display: flex;
     flex-direction: row;
     /* justify-content: ; */
     align-items: center;
     box-shadow: 0 4px 2px -2px black;
+    font-weight: bold;
 }
 
-.nav > a, .nav > button {
+.nav > a, .nav > .button {
     margin: 15px;
     text-decoration: none;
     text-transform: uppercase;
@@ -16,11 +18,11 @@
     font-size: 1em;
 }
 
-.nav > a:hover, .nav > button:hover {
+.nav > a:hover, .nav > .button:hover {
     color: pink;
 }
 
-.nav > button {
+.nav > .button {
     background-color: transparent;
     border: none;
     flex-grow: 1;

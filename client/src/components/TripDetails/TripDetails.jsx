@@ -12,10 +12,7 @@ export default function TripDetails() {
     const [createForm, setCreateForm] = useState(false)
     const [editTrip, setEditTrip] = useState(false)
     const [toggle, setToggle] = useState(false)
-    const [formInput, setFormInput] = useState({
-        
-    })
-
+   
     let {id} = useParams()
     useEffect(() => {
         fetch()
@@ -25,7 +22,6 @@ export default function TripDetails() {
         let data = await getATrip(id)
         let res = await getAllDays(id)
         setTrip(data)
-        console.log(data)
         setDays(res)
     }
 
@@ -43,9 +39,9 @@ export default function TripDetails() {
 
     async function handleSubmit (event) {
         event.preventDefault()
-        let res = await updateATrip(id, trip)
+        await updateATrip(id, trip)
         setToggle(prevState => !prevState)
-        console.log(res)
+        setEditTrip(prevState => !prevState)
     }
     return (
         <div className="trip-layout">
@@ -57,7 +53,7 @@ export default function TripDetails() {
                     <input name="name" type="text" value={trip.name}/>
                     <input name="location" type="text" value={trip.location}/>
                     <input name="description" type="text" value={trip.description}/>
-                    <button type="submit">Save</button>
+                    <button className="button" type="submit">Save</button>
                 </form> : <div>
                 <h1>{trip.name}</h1>
                 <h3>{trip.location}</h3>
@@ -84,8 +80,11 @@ export default function TripDetails() {
             })}
             </div>
             </div>
-            <button onClick={handleAddDay}>Add Day</button>
-            {createForm ? <CreateDay setCreateForm={setCreateForm} setToggle={setToggle}/> : null}
+            <div className="add-button">
+                {createForm ? <CreateDay setCreateForm={setCreateForm} setToggle={setToggle}/> : null}
+                {createForm ? <button className="button add" onClick={handleAddDay}>Cancel</button> : <button className="button add" onClick={handleAddDay}>Add Day</button>}
+                
+            </div>
         </div>
     )
 }

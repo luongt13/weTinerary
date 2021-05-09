@@ -2,5 +2,21 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  background-color: #212F3C;
+}
+
+button {
+  background-color: #424949;
+  border: none;
+  padding: 8px;
+  margin: 5px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0E6655;
 }
 

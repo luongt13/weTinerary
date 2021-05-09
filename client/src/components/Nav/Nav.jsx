@@ -15,10 +15,10 @@ export default function Nav(props) {
             return (
             <div className="nav">
                 <Link to="/">All Trips</Link>
-                <Link to="/create-trip"> <GrAdd/> Add Trip</Link>
+                <Link to="/create-trip">Add Trip</Link>
                 <Link to="/my-trips">My Trips </Link>
                 
-                <button onClick={handleLogout}> <RiLogoutBoxRLine/> Logout</button>
+                <button className="button" onClick={handleLogout}> <RiLogoutBoxRLine/> Logout</button>
             </div>
             )
         } else {

@@ -9,13 +9,14 @@
     margin: 15px;
     text-align: left;
     border-radius: 5px;
-    box-shadow: 1px 1px 5px 1px black;
-    background-color: #D1F2EB;
+    /* box-shadow: 1px 1px 5px 1px black; */
+    /* background-color: #D1F2EB; */
     padding: 10px;
+    border: 2px solid black;
 }
 
 .trip-item:hover {
-    background-color: white;
+    /* background-color: white; */
 
 }
 

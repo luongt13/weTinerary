@@ -18,7 +18,7 @@ export default function CreateTrip() {
     async function handleSubmit(event) {
         event.preventDefault()
         let data = await createATrip(form)
-        history.push(`/create-day/${data.id}`)
+        history.push(`/trips/${data.id}`)
     }
     return (
     <form onChange={handleChange} onSubmit={handleSubmit}>

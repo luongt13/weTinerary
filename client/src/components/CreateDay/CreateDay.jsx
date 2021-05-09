@@ -2,7 +2,7 @@ import {useState} from 'react'
 import {useParams} from "react-router-dom"
 import {createADay} from "../../services/days"
 
-export default function  () {
+export default function CreateDay(props) {
     const [showForm, setShowForm] = useState(false)
     const [tripDay, setTripDay] = useState({})
     const [activityForm, setActivityForm] = useState({})
@@ -30,7 +30,9 @@ export default function  () {
             activities_attributes: [activityForm]
         }
         let data = await createADay(id, form)
-        console.log(data)
+        setShowForm(prevState => !prevState)
+        props.setToggle(prevState => !prevState)
+        props.setCreateForm(prevState => !prevState)
     }
     function showActivityForm() {
         setShowForm(prevState => !prevState)
@@ -52,11 +54,11 @@ export default function  () {
                 : <button type="submit">Save</button>
             }
         </form>
-            {showForm ?
+            {/* {showForm ?
             <form>
                 <input name="name" type="text" placeholder="name" value={activityForm.name}/>
                 <input name="location" type="text" placeholder="location" value={activityForm.location}/>
-            </form>: <div></div>}
+            </form>: <div></div>} */}
         </>
     )
 }

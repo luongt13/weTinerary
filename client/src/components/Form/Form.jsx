@@ -1,10 +1,12 @@
 import {useState} from 'react'
 import {updateADay} from "../../services/days"
 import {useParams} from "react-router-dom"
+import "./Form.css"
+
 export default function Form(props) {
+    console.log(props.activity)
     let {name, location, day_id, id} = props.activity
     let params = useParams()
-    console.log(day_id)
     let trip_id = (parseInt(params.id))
     console.log(props.activity)
     const [form, setForm] = useState({
@@ -24,18 +26,21 @@ export default function Form(props) {
     }
     async function handleSubmit(event){
         event.preventDefault()
-        let data = await updateADay(trip_id, day_id, {activities_attributes: form})
+        await updateADay(trip_id, day_id, {activities_attributes: form})
         props.setToggle(prevState => !prevState)
         props.setShowForm(prevState => !prevState)
-        console.log(data)
     }
     return (
         <div>
-            <form onChange={handleChange} onSubmit={handleSubmit}>
-                <input name="name" type="text" value={form.name}/>
+            {props.activity ? <form className="edit-form" onChange={handleChange} onSubmit={handleSubmit}> 
+                <input className="name" name="name" type="text" value={form.name}/>
                 <input name="location" type="text" value={form.location}/>
                 <button type="submit">Save</button>
-            </form>
+            </form> : 
+            <div></div>
+            
+            }
+        
         </div>
     )
 }

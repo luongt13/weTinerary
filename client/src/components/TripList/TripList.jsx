@@ -2,11 +2,12 @@ import {useState, useEffect} from 'react'
 import {Link, useParams} from "react-router-dom"
 import {getAllTrips} from "../../services/trips"
 import {getUserTrips} from "../../services/trips"
+import "./TripList.css"
 
 export default function TripList() {
     const [trips, setTrips] = useState([])
     let {url} = useParams()
-    
+
     useEffect(() => {
         fetch()
     }, [])
@@ -22,16 +23,15 @@ export default function TripList() {
     }
 
     return (
-        <div>
-            All Trips
+        <div className="trip-list">
             {trips.map((trip)=> {
                 return (
-                    <div key={trip.id}>
+                    <div key={trip.id} className="trip-item">
                         <Link to={`/trips/${trip.id}`}>
                             <h3>{trip.name}</h3>
-                        </Link>
-                            <p>{trip.location}</p>
+                            <h5>{trip.location}</h5>
                             <p>{trip.description}</p>
+                            </Link>
                     </div>
                 )
             })}

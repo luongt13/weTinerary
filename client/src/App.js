@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div className="App">
-      <Nav/>
+      <Nav currentUser={currentUser}/>
       <Route path="/signup">
         <SignUp/>
       </Route>

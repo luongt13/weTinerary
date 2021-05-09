@@ -22,6 +22,8 @@ export const createATrip = async (body) => {
 
 export const updateATrip = async (id, body) => {
     const res = await api.put(`/trips/${id}`, body)
+    console.log(body)
+    console.log(id)
     return res.data
 }
 

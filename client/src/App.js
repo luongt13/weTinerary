@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div className="App">
-      <Nav/>
+      <Nav currentUser={currentUser}/>
       <Route path="/signup">
         <SignUp/>
       </Route>
@@ -34,9 +34,9 @@ function App() {
       <Route path="/trips/:id">
         <TripDetails/>
       </Route>
-      <Route path="/create-day/:id">
+      {/* <Route path="/create-day/:id">
         <CreateDay/>
-      </Route>
+      </Route> */}
       <Route path="/create-trip">
         <CreateTrip/>
       </Route>

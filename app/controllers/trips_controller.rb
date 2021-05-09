@@ -12,11 +12,11 @@ class TripsController < ApiController
         @trips = Trip.all
         render json: @trips
     end
-
+    #show a specific trip
     def show
-        render json: @trip, include: [:days]
+        render json: @trip, include: [:days, :activities]
     end
-
+    #create a trip, specific to that user
     def create
         @trip = current_user.trips.build(trip_params)
         if @trip.save
@@ -25,7 +25,7 @@ class TripsController < ApiController
             render json: @trip.errors
         end
     end
-
+    #update trip name and descriptions
     def update
         if @trip.update(trip_params)
             render json: @trip
@@ -33,14 +33,14 @@ class TripsController < ApiController
             render json: @trip.errors
         end
     end
-        
+    #delete a trip
     def destroy
         @trip.destroy
         render json: {message: "#{@trip.name} has been deleted"}
     end
 
     private
-
+    #find a trip based on id
     def set_trip
         @trip = Trip.find(params[:id])
     end

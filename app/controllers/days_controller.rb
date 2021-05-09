@@ -1,36 +1,36 @@
 class DaysController < ApiController
     skip_before_action :authenticate_user!, only: [:index, :show]
     before_action :set_day, only: [:show, :update, :destroy]
-
+    before_action :set_trip, only: [:index, :create]
+    #get all the days based on trip id
     def index
-        @trip = Trip.find(params[:trip_id])
+        # @trip = Trip.find(params[:trip_id])
         @days = @trip.days
         render json: @days, include: [:activities]
     end
-
-    # def show
-    #     render json: @day, include: [:activities]
-    # end
-
+    #get a specific day
+    def show
+        render json: @day, include: [:activities]
+    end
+    #create a day
     def create
-        @trip = Trip.find(params[:trip_id])
+        # @trip = Trip.find(params[:trip_id])
         @day = @trip.days.build(day_params)
-        # @day = Day.new(day_params)
         if @day.save
             render json: @day, include: [:activities]
         else
             render json: @day.errors
         end
     end
-
+    #update a day and acitvities
     def update
-        if @day.update(day_params)
-            render json: @day
+        if @day.update(update_params)
+            render json: @day, include: [:activities]
         else 
             render json: @day.errors
         end
     end
-        
+    #delete a day
     def destroy
         @day.destroy
         render json: {message: "Day #{@day.trip_day} has been deleted"}
@@ -42,7 +42,15 @@ class DaysController < ApiController
         @day = Day.find(params[:id])
     end
 
+    def set_trip
+        @trip = Trip.find(params[:trip_id])
+    end
+
     def day_params
         params.require(:day).permit(:trip_day, activities_attributes: [:name, :location])
+    end
+
+    def update_params
+        params.require(:day).permit(:trip_day, activities_attributes: [:id, :name, :location])
     end
 end

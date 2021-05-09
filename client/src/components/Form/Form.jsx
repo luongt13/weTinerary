@@ -25,6 +25,8 @@ export default function Form(props) {
     async function handleSubmit(event){
         event.preventDefault()
         let data = await updateADay(trip_id, day_id, {activities_attributes: form})
+        props.setToggle(prevState => !prevState)
+        props.setShowForm(prevState => !prevState)
         console.log(data)
     }
     return (

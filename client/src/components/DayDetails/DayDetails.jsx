@@ -9,7 +9,7 @@ export default function DayDetails(props) {
             {props.activities && props.activities.map((activity) => {
                 return (
                     <div key={activity.id}>
-                        {showForm ? <Form activity={activity}/> :
+                        {showForm ? <Form activity={activity} setToggle={props.setToggle} setShowForm={setShowForm}/> :
                         <div>
                             <h3>{activity.name}</h3>
                             <p>{activity.location}</p>
@@ -20,7 +20,8 @@ export default function DayDetails(props) {
                     </div>
                 )
             }) }
-        <button onClick={() => setShowForm(prevState => !prevState)}>Edit</button>     
+        {showForm ? <button onClick={() => setShowForm(prevState => !prevState)}>Cancel</button>   :   <button onClick={() => setShowForm(prevState => !prevState)}>Edit</button>    }
+        
         </div>
     )
 }

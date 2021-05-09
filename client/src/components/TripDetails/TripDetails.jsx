@@ -4,11 +4,11 @@ import {getATrip} from "../../services/trips"
 import {useParams} from "react-router-dom"
 import CreateDay from '../CreateDay/CreateDay'
 import DayDetails from "../DayDetails/DayDetails"
+import Delete from "../Delete/Delete"
 export default function TripDetails() {
     const [days, setDays] = useState()
     const [trip, setTrip] = useState()
     const [createForm, setCreateForm] = useState(false)
-    const [editForm, setEditForm] = useState(false)
     const [toggle, setToggle] = useState(false)
     let {id} = useParams()
     useEffect(() => {
@@ -26,12 +26,7 @@ export default function TripDetails() {
     async function handleAddDay(){
         setCreateForm(prevState => !prevState)
     }
-    function handleEdit() {
 
-    }
-    async function handleDelete(){
-        
-    }
 
     return (
         <div>
@@ -49,7 +44,7 @@ export default function TripDetails() {
                 return (
                 <div key={day.id}>
                     <h3>Day {day.trip_day}</h3> 
-                    <DayDetails activities={day.activities}/>
+                    <DayDetails activities={day.activities} setToggle={setToggle}/>
                     {/* {day.activities && day.activities.map((activity) => {
                         return (
                             <div key={activity.id}>
@@ -60,7 +55,7 @@ export default function TripDetails() {
                         )
                     }) } */}
                     {/* <button onClick={() => setEditForm(prevState => !prevState)}>Edit</button> */}
-                    <button>Delete Day</button>
+                    <Delete setToggle={setToggle} day_id={day.id} trip_id={day.trip_id}/>
                 </div>
                 )
             })}

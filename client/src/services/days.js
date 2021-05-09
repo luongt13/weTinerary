@@ -12,7 +12,10 @@ export const createADay = async (id, body) => {
 
 export const updateADay = async (id, day_id, body) => {
     const res = await api.put(`/trips/${id}/days/${day_id}`, body)
-    console.log(body)
-    console.log(res.data)
+    return res.data
+}
+
+export const deleteADay = async (id, day_id) => {
+    const res = await api.delete(`/trips/${id}/days/${day_id}`)
     return res.data
 }

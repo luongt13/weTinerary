@@ -2,10 +2,12 @@ import {useState, useEffect} from 'react'
 import {Link, useParams} from "react-router-dom"
 import {getAllTrips} from "../../services/trips"
 import {getUserTrips} from "../../services/trips"
+import CreateTrip from '../CreateTrip/CreateTrip'
 import "./TripList.css"
 
 export default function TripList() {
     const [trips, setTrips] = useState([])
+    const [createTrip, setCreateTrip] = useState(false)
     let {url} = useParams()
 
     useEffect(() => {
@@ -23,6 +25,7 @@ export default function TripList() {
     }
 
     return (
+        <>
         <div className="trip-list">
             {trips.map((trip)=> {
                 return (
@@ -36,5 +39,10 @@ export default function TripList() {
                 )
             })}
         </div>
+        <div className="add-button">
+        {createTrip ? null : <CreateTrip/>}
+        {createTrip ?  <button className="button add" onClick={()=> setCreateTrip(prevState => !prevState)}>Add Trip</button>: <button className="add-button add" onClick={()=> setCreateTrip(prevState => !prevState)}>Cancel</button>}
+        </div>
+        </>
     )
 }

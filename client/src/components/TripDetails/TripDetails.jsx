@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import {getAllDays, createADay} from "../../services/days"
+import {getAllDays} from "../../services/days"
 import {getATrip, updateATrip} from "../../services/trips"
 import {useParams} from "react-router-dom"
 import CreateDay from '../CreateDay/CreateDay'
@@ -12,7 +12,7 @@ export default function TripDetails() {
     const [createForm, setCreateForm] = useState(false)
     const [editTrip, setEditTrip] = useState(false)
     const [toggle, setToggle] = useState(false)
-   
+
     let {id} = useParams()
     useEffect(() => {
         fetch()

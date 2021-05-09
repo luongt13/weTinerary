@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import {useHistory} from "react-router-dom"
 import {createATrip} from "../../services/trips"
+import "./CreateTrip.css"
 
 export default function CreateTrip() {
     const [form, setForm] = useState({})
@@ -21,7 +22,7 @@ export default function CreateTrip() {
         history.push(`/trips/${data.id}`)
     }
     return (
-    <form onChange={handleChange} onSubmit={handleSubmit}>
+    <form className="container" onChange={handleChange} onSubmit={handleSubmit}>
         <input name="name" type="text" placeholder="name" value={form.name}/>
         <input name="location" type="text" placeholder="location" value={form.location}/>
         <input name="description" type="text" placeholder="description" value={form.description}/>

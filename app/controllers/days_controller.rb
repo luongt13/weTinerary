@@ -5,7 +5,7 @@ class DaysController < ApiController
     #get all the days based on trip id
     def index
         # @trip = Trip.find(params[:trip_id])
-        @days = @trip.days
+        @days = @trip.days.order(trip_day: :asc)
         render json: @days, include: [:activities]
     end
     #get a specific day

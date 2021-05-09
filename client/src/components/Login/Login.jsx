@@ -1,9 +1,9 @@
 import {useState} from 'react'
 import {loginUser} from "../../services/auth"
+import "./Login.css"
 
 export default function Login(props) {
     const [form, setForm] = useState({})
-
     function handleChange(event) {
         let {name, value} = event.target
         setForm((prevState) => ({
@@ -18,7 +18,7 @@ export default function Login(props) {
         props.verify()
     }
     return (
-    <form onChange={handleChange} onSubmit={handleSubmit}>
+    <form className="user-form" onChange={handleChange} onSubmit={handleSubmit}>
         <input name="email" type="email" placeholder="email" value={form.email}/>
         <input name="password" type="password" placeholder="password" value={form.password}/>
         <button type="submit">Login</button>

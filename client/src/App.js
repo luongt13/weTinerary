@@ -6,12 +6,15 @@ import Login from "./components/Login/Login.jsx"
 import TripList from "./components/TripList/TripList.jsx"
 import TripDetails from "./components/TripDetails/TripDetails.jsx"
 import CreateTrip from "./components/CreateTrip/CreateTrip.jsx"
-import CreateDay from "./components/CreateDay/CreateDay.jsx"
+// import CreateDay from "./components/CreateDay/CreateDay.jsx"
 import {verifyUser} from "./services/auth.js"
+import {useHistory} from "react-router-dom"
+
 import './App.css';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
+  let history = useHistory()
 
   useEffect(() => {
     verify()
@@ -20,6 +23,8 @@ function App() {
   async function verify() {
     let user = await verifyUser()
     setCurrentUser(user)
+    history.push("/")
+
   }
   return (
     <div className="App">
@@ -40,7 +45,7 @@ function App() {
         <CreateTrip />
       </Route> */}
       <Route path="/my-trips">
-        <TripList/>
+        <TripList currentUser={currentUser}/>
       </Route>
       <Route exact path="/">
         <TripList/>

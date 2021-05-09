@@ -1,8 +1,10 @@
 import {useState} from 'react'
 import {registerUser} from "../../services/auth"
+import {useHistory} from "react-router-dom"
 
 export default function SignUp() {
     const [form, setForm] = useState({})
+    let history = useHistory()
 
     function handleChange(event) {
         let {name, value} = event.target
@@ -15,13 +17,14 @@ export default function SignUp() {
     async function handleSubmit(event) {
         event.preventDefault()
         await registerUser(form)
+        history.push("/login")
     }
     
     return (
-    <form onChange={handleChange} onSubmit={handleSubmit}>
+    <form className="user-form" onChange={handleChange} onSubmit={handleSubmit}>
         <input name="email" type="email" placeholder="email" value={form.email}/>
         <input name="password" type="password" placeholder="password" value={form.password}/>
-        <input name="password_confirmation" type="password" placeholder="confirm password" value={form.password}/>
+        <input name="password_confirmation" type="password" placeholder="confirm password" value={form.password_confirmation}/>
         <button type="submit">Create</button>
     </form>
     )

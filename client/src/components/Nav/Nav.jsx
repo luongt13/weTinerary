@@ -17,16 +17,17 @@ export default function Nav(props) {
                 <Link to="/">All Trips</Link>
                 {/* <Link to="/create-trip">Add Trip</Link> */}
                 <Link to="/my-trips">My Trips </Link>
-                
                 <button className="button" onClick={handleLogout}> <RiLogoutBoxRLine/> Logout</button>
             </div>
             )
         } else {
+            return (
             <div className="nav">
                 <Link to="signup">Sign Up</Link>
                 <Link to="login">Login</Link>
                 <Link to="/">All Trips</Link>
             </div>
+            )
         }
     }
     

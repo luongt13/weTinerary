@@ -8,20 +8,20 @@ import "./TripList.css"
 export default function TripList() {
     const [trips, setTrips] = useState([])
     const [createTrip, setCreateTrip] = useState(false)
-    let {url} = useParams()
-
+    // let params = useParams()
+// console.log(params)
     useEffect(() => {
         fetch()
     }, [])
 
     async function fetch() {
-        if (url === "my-trips") {
-            let data = await getUserTrips()
-            setTrips(data)
-        } else {
-            let data = await getAllTrips()
-            setTrips(data)
-        }
+        // if (url === "my-trips") {
+        //     let data = await getUserTrips()
+        //     setTrips(data)
+        // } else {
+        //     let data = await getAllTrips()
+        //     setTrips(data)
+        // }
     }
 
     return (

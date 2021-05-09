@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 2021_05_07_220413) do
     t.bigint "trip_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["trip_day"], name: "index_days_on_trip_day", unique: true
     t.index ["trip_id"], name: "index_days_on_trip_id"
   end
 

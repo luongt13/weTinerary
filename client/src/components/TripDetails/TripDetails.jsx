@@ -1,16 +1,19 @@
 import {useState, useEffect} from 'react'
-import {getAllDays} from "../../services/days"
+import {getAllDays, createADay} from "../../services/days"
 import {getATrip} from "../../services/trips"
 import {useParams} from "react-router-dom"
 import CreateDay from '../CreateDay/CreateDay'
+import DayDetails from "../DayDetails/DayDetails"
 export default function TripDetails() {
     const [days, setDays] = useState()
     const [trip, setTrip] = useState()
     const [createForm, setCreateForm] = useState(false)
+    const [editForm, setEditForm] = useState(false)
+    const [toggle, setToggle] = useState(false)
     let {id} = useParams()
     useEffect(() => {
         fetch()
-    }, [])
+    }, [toggle])
 
     async function fetch() {
         let data = await getATrip(id)
@@ -20,10 +23,16 @@ export default function TripDetails() {
         setDays(res)
     }
 
-    function showCreateForm(){
+    async function handleAddDay(){
         setCreateForm(prevState => !prevState)
     }
-    
+    function handleEdit() {
+
+    }
+    async function handleDelete(){
+        
+    }
+
     return (
         <div>
             {trip ? 
@@ -35,37 +44,29 @@ export default function TripDetails() {
             </div>
             : <div></div>
             }
-            {/* <div className="trip-description">
-                {days && days.forEach((day) => day.activities.length) ? 
-                    <div>
-                    <h1>{days[0].trip.name}</h1>
-                    <h3>{days[0].trip.location}</h3>
-                    <p>{days[0].trip.description}</p>
-                    </div>
-                    : 
-                    <div></div>
-            }
-        </div> */}
             <div className="day-item">
-            {days && days.map((day, index) => {
+            {days && days.map((day) => {
                 return (
                 <div key={day.id}>
-                    <h3>Day {index}</h3> 
-                    {day.activities && day.activities.map((activity) => {
+                    <h3>Day {day.trip_day}</h3> 
+                    <DayDetails activities={day.activities}/>
+                    {/* {day.activities && day.activities.map((activity) => {
                         return (
                             <div key={activity.id}>
                                 <h3>{activity.name}</h3>
                                 <p>{activity.location}</p>
+                                <button>Delete Activity</button>
                             </div>
                         )
-                    }) }
-                    <button>Edit</button>
-                    <button>Delete</button>
+                    }) } */}
+                    {/* <button onClick={() => setEditForm(prevState => !prevState)}>Edit</button> */}
+                    <button>Delete Day</button>
                 </div>
                 )
             })}
             </div>
-            <button onClick={showCreateForm}>Add Day</button>
+            {/* {showForm ? <CreateDay/> : null} */}
+            <button onClick={handleAddDay}>Add Day</button>
             {createForm ? <CreateDay/> : null}
         </div>
     )

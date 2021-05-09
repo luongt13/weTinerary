@@ -34,9 +34,9 @@ function App() {
       <Route path="/trips/:id">
         <TripDetails/>
       </Route>
-      <Route path="/create-day/:id">
+      {/* <Route path="/create-day/:id">
         <CreateDay/>
-      </Route>
+      </Route> */}
       <Route path="/create-trip">
         <CreateTrip/>
       </Route>

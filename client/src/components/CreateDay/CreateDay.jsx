@@ -29,7 +29,7 @@ export default function CreateDay(props) {
             trip_day: parseInt(tripDay.trip_day),
             activities_attributes: [activityForm]
         }
-        let data = await createADay(id, form)
+        await createADay(id, form)
         setShowForm(prevState => !prevState)
         props.setToggle(prevState => !prevState)
         props.setCreateForm(prevState => !prevState)

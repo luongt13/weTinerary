@@ -3,8 +3,7 @@ import {deleteADay} from "../../services/days"
 export default function Delete(props) {
 
     async function handleDelete(){
-        const res = await deleteADay(props.trip_id, props.day_id)
-        console.log(res)
+        await deleteADay(props.trip_id, props.day_id)
         props.setToggle(prevState => !prevState)
     }
     return (

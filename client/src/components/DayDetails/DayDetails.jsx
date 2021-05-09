@@ -20,7 +20,7 @@ export default function DayDetails(props) {
 
     async function handleSubmit(event){
         event.preventDefault()
-        let res = await createActivity(id, day_id, formInput)
+        await createActivity(id, day_id, formInput)
         props.setToggle(prevState => !prevState)
         setAddActivity(prevState => !prevState)
         setFormInput("")
@@ -56,8 +56,15 @@ export default function DayDetails(props) {
                 )
             }) }
             {displayAdd()}
-        {showForm ? <button onClick={() => setShowForm(prevState => !prevState)}>Cancel</button>   :   <button onClick={() => setShowForm(prevState => !prevState)}>Edit</button> }
-        {addActivity ? <button onClick={() => setAddActivity(prevState => !prevState)}>Cancel</button> :<button onClick={() => setAddActivity(prevState => !prevState)}>Add Activity</button>}
+            {props.currentUser.id === props.trip ?
+            <>
+            {showForm  ? <button onClick={() => setShowForm(prevState => !prevState)}>Cancel</button>   :   <button onClick={() => setShowForm(prevState => !prevState)}>Edit</button> }
+            {addActivity  ? <button onClick={() => setAddActivity(prevState => !prevState)}>Cancel</button> : <button onClick={() => setAddActivity(prevState => !prevState)}>Add Activity</button>}
+            </>
+            : null
+            
+            }
+        
         
         </div>
     )

@@ -17,11 +17,6 @@
     border: 2px solid black;
 }
 
-.trip-item:hover {
-    /* background-color: white; */
-
-}
-
 .trip-item > a {
     text-decoration: none;
 }

@@ -6,13 +6,12 @@ import CreateDay from '../CreateDay/CreateDay'
 import DayDetails from "../DayDetails/DayDetails"
 import Delete from "../Delete/Delete"
 import "./TripDetails.css"
-export default function TripDetails() {
+export default function TripDetails(props) {
     const [days, setDays] = useState()
     const [trip, setTrip] = useState()
     const [createForm, setCreateForm] = useState(false)
     const [editTrip, setEditTrip] = useState(false)
     const [toggle, setToggle] = useState(false)
-
     let {id} = useParams()
     useEffect(() => {
         fetch()
@@ -58,8 +57,12 @@ export default function TripDetails() {
                 <h1>{trip.name}</h1>
                 <h3>{trip.location}</h3>
                 <p>{trip.description}</p>
-                <button onClick={() => setEditTrip(prevState => !prevState)}>Edit Trip Details</button>
+                {trip.user_id === props.currentUser.id ? <button onClick={() => setEditTrip(prevState => !prevState)}>Edit Trip Details</button>
+                    : null
+                
+                }
                 </div>
+                
             }
                 
             </div>
@@ -71,10 +74,10 @@ export default function TripDetails() {
                 <div key={day.id} className="day-item">
                     <h3 className="day">Day {day.trip_day}</h3> 
                     <div className="day-details">
-                        <DayDetails activities={day.activities} setToggle={setToggle}/>
+                        <DayDetails activities={day.activities} setToggle={setToggle} currentUser={props.currentUser} trip={trip.user_id}/>
                         </div>
-
-                        <Delete setToggle={setToggle} day_id={day.id} trip_id={day.trip_id}/>
+                        {trip.user_id === props.currentUser.id ? <Delete setToggle={setToggle} day_id={day.id} trip_id={day.trip_id}/> : null}
+                        
                 </div>
                 )
             })}
@@ -82,8 +85,7 @@ export default function TripDetails() {
             </div>
             <div className="add-button">
                 {createForm ? <CreateDay setCreateForm={setCreateForm} setToggle={setToggle}/> : null}
-                {createForm ? <button className="button add" onClick={handleAddDay}>Cancel</button> : <button className="button add" onClick={handleAddDay}>Add Day</button>}
-                
+                {createForm && props.currentUser.id === trip.user-id ? <button className="button add" onClick={handleAddDay}>Cancel</button> : <button className="button add" onClick={handleAddDay}>Add Day</button>}
             </div>
         </div>
     )

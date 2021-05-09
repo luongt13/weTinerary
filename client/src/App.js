@@ -21,7 +21,6 @@ function App() {
     let user = await verifyUser()
     setCurrentUser(user)
   }
-
   return (
     <div className="App">
       <Nav currentUser={currentUser}/>
@@ -32,14 +31,14 @@ function App() {
         <Login verify={verify}/>
       </Route>
       <Route path="/trips/:id">
-        <TripDetails/>
+        <TripDetails currentUser={currentUser}/>
       </Route>
       {/* <Route path="/create-day/:id">
         <CreateDay/>
       </Route> */}
-      <Route path="/create-trip">
-        <CreateTrip/>
-      </Route>
+      {/* <Route path="/create-trip">
+        <CreateTrip />
+      </Route> */}
       <Route path="/my-trips">
         <TripList/>
       </Route>

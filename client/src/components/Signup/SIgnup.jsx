@@ -27,7 +27,7 @@ export default function SignUp() {
         <input name="email" type="email" placeholder="email" value={form.email}/>
         <input name="password" type="password" placeholder="password" value={form.password}/>
         <input name="password_confirmation" type="password" placeholder="confirm password" value={form.password_confirmation}/>
-        <button type="submit">Create</button>
+        <button type="submit" className="submit-btn">Create</button>
     </form>
     )
 }

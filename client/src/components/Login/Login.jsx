@@ -25,7 +25,7 @@ export default function Login(props) {
         <h1>Login</h1>
         <input name="email" type="email" placeholder="email" defaultValue={form.email}/>
         <input name="password" type="password" placeholder="password" defaultValue={form.password}/>
-        <button type="submit">Login</button>
+        <button type="submit" className="submit-btn">Login</button>
     </form>
     )
 }

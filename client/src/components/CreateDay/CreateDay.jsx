@@ -41,18 +41,15 @@ export default function CreateDay(props) {
     }
     return (
     <div className="container">
-        <h3>Add A Day</h3>
         <form onChange={handleDay}>
-            <label htmlFor="trip_day">Which day?</label>
+            <h3>Add A Day</h3>
             <input name="trip_day" type="number" placeholder="Enter day" defaultValue={tripDay.trip_day}/>
         </form>
         <form onChange={handleChange} onSubmit={handleSubmit}>
-            <h3>Add An Activity</h3>
-            <label>Start time</label>
-            <input name="start" type="time" placeholder="Start time" defaultValue={activityForm.start}/>
-            <label htmlFor="name">What are you doing?</label>
+            <h4>Add An Activity</h4>
+            <label htmlFor="start">start time</label>
+            <input name="start" type="time" defaultValue={activityForm.start}/>
             <input name="name" type="text" placeholder="Enter activity name" defaultValue={activityForm.name}/>
-            <label htmlFor="location">Where is this activity?</label>
             <input name="location" type="text" placeholder="Enter location" defaultValue={activityForm.location}/>
             {showForm ? 
                 <button onClick={showActivityForm}>Add Activity</button>

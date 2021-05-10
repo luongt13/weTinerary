@@ -8,9 +8,21 @@
 
 .user-form > h1 {
     color: #C9A81E;
+    text-transform: uppercase;
 }
 .user-form > input[type=email], input[type=password] {
     width: 25%;
     margin: 10px;
     height: 40px;
+    padding: 5px;
+}
+
+.submit-btn {
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 650px) {
+    .user-form > input[type=email], input[type=password]  {
+        width: 80%;
+    }
 }

@@ -44,4 +44,7 @@
         width: 25%; 
     }
     
+    .nav > a, .logout > .button {
+        font-size: 0.75em;
+    }
 }

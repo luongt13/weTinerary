@@ -8,3 +8,7 @@
 .activity-details > h3, p {
     margin-top: 5px;
 }
+
+.activity-details {
+    border-bottom: 1px solid gray;
+}

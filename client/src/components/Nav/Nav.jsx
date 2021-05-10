@@ -9,7 +9,7 @@ export default function Nav(props) {
         if (props.currentUser) {
             return (
             <div className="nav">
-                <img src="/images/wetinenary.png" className="logo" alt="wetinerary logo"/>
+                <img src="/images/wet-logo.png" className="logo" alt="wetinerary logo"/>
                 <Link to="/">All Trips</Link>
                 <Link to={`/my-trips/${props.currentUser.id}`}>My Trips</Link>
                 <div className="logout">
@@ -20,7 +20,7 @@ export default function Nav(props) {
         } else {
             return (
             <div className="nav">
-                <img src="/images/wetinenary.png" className="logo" alt="wetinerary logo"/>
+                <img src="/images/wet-logo.png" className="logo" alt="wetinerary logo"/>
                 <Link to="/">All Trips</Link>
                 <div className="nav forms">
                     <Link to="/signup">Sign Up</Link>

@@ -12,10 +12,10 @@ button {
   color: white;
   text-transform: uppercase;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 50%;
 }
 
 button:hover {
-  background-color: #0E6655;
+  background-color: #C9A81E;
 }
 

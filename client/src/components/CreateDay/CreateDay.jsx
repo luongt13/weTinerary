@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import {FaSave} from "react-icons/fa"
 import {useParams} from "react-router-dom"
 import {createADay} from "../../services/days"
 import "./CreateDay.css"
@@ -40,9 +41,9 @@ export default function CreateDay(props) {
     }
     return (
     <div className="container">
-            <h3>Add A Day</h3>
+        <h3>Add A Day</h3>
         <form onChange={handleDay}>
-            <label htmlFor="trip_day">Day</label>
+            <label htmlFor="trip_day">Which day?</label>
             <input name="trip_day" type="number" placeholder="Enter day" value={tripDay.trip_day}/>
         </form>
         <form onChange={handleChange} onSubmit={handleSubmit}>
@@ -53,7 +54,7 @@ export default function CreateDay(props) {
             <input name="location" type="text" placeholder="Enter location" value={activityForm.location}/>
             {showForm ? 
                 <button onClick={showActivityForm}>Add Activity</button>
-                : <button type="submit">Save</button>}
+                : <button type="submit" title="Save"><FaSave/></button>}
         </form>
     </div>
     )

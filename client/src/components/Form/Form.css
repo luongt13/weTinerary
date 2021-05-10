@@ -5,7 +5,7 @@ form {
     padding: 5px;
 }
 
-input[type=text] {
+input[type=text], input[type=number] {
     background-color: #D1F2EB;
     border: none;
     margin: 10px 0 10px 0;

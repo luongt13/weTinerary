@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import {FaSave} from "react-icons/fa"
 import {useHistory} from "react-router-dom"
 import {createATrip} from "../../services/trips"
 import "./CreateTrip.css"
@@ -23,10 +24,11 @@ export default function CreateTrip() {
     }
     return (
     <form className="container" onChange={handleChange} onSubmit={handleSubmit}>
-        <input name="name" type="text" placeholder="name" value={form.name}/>
-        <input name="location" type="text" placeholder="location" value={form.location}/>
-        <input name="description" type="text" placeholder="description" value={form.description}/>
-        <button type="submit">Create Trip</button>
+        <h3>Create A Trip</h3>
+        <input name="name" type="text" placeholder="Enter trip name" value={form.name}/>
+        <input name="location" type="text" placeholder="Enter location" value={form.location}/>
+        <input name="description" type="text" placeholder="Enter description" value={form.description}/>
+        <button type="submit" type="Save"><FaSave/></button>
     </form>
     )
 }

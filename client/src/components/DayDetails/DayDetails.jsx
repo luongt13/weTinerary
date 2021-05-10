@@ -5,8 +5,13 @@ import {FaSave} from "react-icons/fa"
 import Form from "../Form/Form"
 import {createActivity} from "../../services/activities"
 import {useParams} from "react-router-dom"
+import {updateADay} from "../../services/days"
 
 export default function DayDetails(props) {
+    const [editForm, setEditForm] = useState([])
+
+    const [activities, setActivities] = useState(props.activities)
+
     const [showForm, setShowForm] = useState(false)
     const [addActivity, setAddActivity] = useState(false)
     const [formInput, setFormInput] = useState({})
@@ -19,6 +24,29 @@ export default function DayDetails(props) {
             ...prevState,
             [name]: value
         }))
+    }
+
+    function handleEditChange(event, id) {
+        let {name, value} = event.target
+        let updatedActivities = [...activities]
+        updatedActivities = updatedActivities.map((activity) => {
+            if(activity.id === id)  {
+                return ({
+                    ...activity,
+                    [name]: value
+                })
+            } else {
+                return activity
+            }
+        })
+        setActivities(updatedActivities)
+    }
+
+    async function handleEdit(e) {
+        e.preventDefault()
+        await updateADay(id, day_id, {activities_attributes: activities})
+        setShowForm(prevState => !prevState)
+        props.setToggle(prevState => !prevState)
     }
 
     async function handleSubmit(event){
@@ -42,23 +70,26 @@ export default function DayDetails(props) {
             )
         }
     }
-    console.log(props.currentUser.id)
 
     return (
         <div>
-            {props.activities && props.activities.map((activity) => {
+            <form className="edit-form">
+            {props.activities && activities.map((activity) => {
                 return (
                     <div key={activity.id}>
-                        {showForm ? <Form activity={activity} setToggle={props.setToggle} setShowForm={setShowForm}/> :
+                        {showForm ? <Form activity={activity} setToggle={props.setToggle} setShowForm={setShowForm} setEditForm={setEditForm} editForm={editForm} handleEdit={handleEdit} handleEditChange={handleEditChange}/> :
                         <div>
                             <h3>{activity.name}</h3>
                             <p>{activity.location}</p>
                         </div>
-
                     } 
                     </div>
                 )
             }) }
+
+            {showForm ? <button type="submit" title="Save" onClick={handleEdit}><FaSave/></button> : null}
+            </form>
+
             {displayAdd()}
             {props.currentUser.id === props.trip ?
             <>

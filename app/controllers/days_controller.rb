@@ -47,10 +47,10 @@ class DaysController < ApiController
     end
 
     def day_params
-        params.require(:day).permit(:trip_day, activities_attributes: [:name, :location])
+        params.require(:day).permit(:trip_day, activities_attributes: [:name, :location, :start])
     end
 
     def update_params
-        params.require(:day).permit(:trip_day, activities_attributes: [:id, :name, :location])
+        params.require(:day).permit(:trip_day, activities_attributes: [:id, :name, :location, :start])
     end
 end

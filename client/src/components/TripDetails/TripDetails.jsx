@@ -22,6 +22,7 @@ export default function TripDetails(props) {
         fetchTrips()
         fetchDays()
         return () => {}
+        // eslint-disable-next-line
     }, [toggle])
 
     async function fetchTrips() {
@@ -50,15 +51,16 @@ export default function TripDetails(props) {
         setToggle(prevState => !prevState)
         setEditTrip(prevState => !prevState)
     }
+
     function displayDetails() {
         if (trip) {
             if (editTrip && trip) {
                 return (
                 <div className="trip-description">
                     <form onChange={handleChange} onSubmit={handleSubmit}>
-                    <input name="name" type="text" value={trip.name}/>
-                    <input name="location" type="text" value={trip.location}/>
-                    <input name="description" type="text" value={trip.description}/>
+                    <input name="name" type="text" defaultValue={trip.name}/>
+                    <input name="location" type="text" defaultValue={trip.location}/>
+                    <input name="description" type="text" defaultValue={trip.description}/>
                     <button className="button" type="submit" title="Save"><FaSave/></button>
                     </form> 
                 </div>
@@ -88,7 +90,6 @@ export default function TripDetails(props) {
             <div></div>
         } 
     }
-    console.log("rendering")
     return (
     <div className="trip-layout">
         <div className="trip-overview">
@@ -101,7 +102,7 @@ export default function TripDetails(props) {
                     <div className="day-details">
                         <DayDetails activities={day.activities} setToggle={setToggle} currentUser={props.currentUser} trip={trip.user_id}/>
                     </div>
-                        {props.currentUser && trip.user_id === props.currentUser.id ? <Delete setToggle={setToggle} day_id={day.id} trip_id={day.trip_id}/> : null}     
+                    {props.currentUser && trip.user_id === props.currentUser.id ? <Delete setToggle={setToggle} day_id={day.id} trip_id={day.trip_id}/> : null}     
                 </div>
                 )
             })}

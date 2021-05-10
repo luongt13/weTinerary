@@ -43,7 +43,7 @@ export default function DayDetails(props) {
         })
         setActivities(updatedActivities)
     }
-    
+
     async function handleEdit() {
         await updateADay(id, day_id, {activities_attributes: activities})
         setShowForm(prevState => !prevState)
@@ -52,8 +52,7 @@ export default function DayDetails(props) {
 
     async function handleSubmit(event){
         event.preventDefault()
-        let res = await createActivity(id, day_id, formInput)
-        console.log(res)
+        await createActivity(id, day_id, formInput)
         setAddActivity(prevState => !prevState)
         props.setToggle(prevState => !prevState)
         setFormInput("")
@@ -64,11 +63,11 @@ export default function DayDetails(props) {
             return (
                 <form onChange={handleChange} onSubmit={handleSubmit}>
                     <label htmlFor="start">Start time</label>
-                    <input name="start" type="time" value={formInput.start}/>
+                    <input name="start" type="time" defaultValue={formInput.start}/>
                     <label htmlFor="name">What's the activity?</label>
-                    <input name="name" type="text" value={formInput.name}/>
+                    <input name="name" type="text" defaultValue={formInput.name}/>
                     <label htmlFor="location">Where is the activity?</label>
-                    <input name="location" type="text" value={formInput.location}/>
+                    <input name="location" type="text" defaultValue={formInput.location}/>
                     <button type="submit" title="Save"><FaSave/></button>
                 </form>
             )

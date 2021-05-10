@@ -9,8 +9,7 @@ export default function Form(props) {
 
     async function handleDelete(e) {
         e.preventDefault()
-        let res = await deleteActivity(params.id, day_id, id)
-        console.log(res)
+        await deleteActivity(params.id, day_id, id)
         props.setShowForm(prevState => !prevState)
         props.setToggle(prevState => !prevState)
     }
@@ -19,9 +18,9 @@ export default function Form(props) {
         <form onChange={(e) => props.handleEditChange(e, props.activity.id)}>
             {props.activity ? 
             <>
-            <input name="start" type="time" value={props.activity.start}/>
-            <input className="name" name="name" type="text" value={props.activity.name}/>
-            <input name="location" type="text" value={props.activity.location}/>
+            <input name="start" type="time" defaultValue={props.activity.start}/>
+            <input className="name" name="name" type="text" defaultValue={props.activity.name}/>
+            <input name="location" type="text" defaultValue={props.activity.location}/>
             </> : <div></div> }  
             <button title="Delete" onClick={handleDelete}><MdRemoveCircleOutline/></button>
         </form>

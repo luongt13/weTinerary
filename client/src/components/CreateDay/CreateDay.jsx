@@ -44,16 +44,16 @@ export default function CreateDay(props) {
         <h3>Add A Day</h3>
         <form onChange={handleDay}>
             <label htmlFor="trip_day">Which day?</label>
-            <input name="trip_day" type="number" placeholder="Enter day" value={tripDay.trip_day}/>
+            <input name="trip_day" type="number" placeholder="Enter day" defaultValue={tripDay.trip_day}/>
         </form>
         <form onChange={handleChange} onSubmit={handleSubmit}>
             <h3>Add An Activity</h3>
             <label>Start time</label>
-            <input name="start" type="time" placeholder="Start time" value={activityForm.start}/>
+            <input name="start" type="time" placeholder="Start time" defaultValue={activityForm.start}/>
             <label htmlFor="name">What are you doing?</label>
-            <input name="name" type="text" placeholder="Enter activity name" value={activityForm.name}/>
+            <input name="name" type="text" placeholder="Enter activity name" defaultValue={activityForm.name}/>
             <label htmlFor="location">Where is this activity?</label>
-            <input name="location" type="text" placeholder="Enter location" value={activityForm.location}/>
+            <input name="location" type="text" placeholder="Enter location" defaultValue={activityForm.location}/>
             {showForm ? 
                 <button onClick={showActivityForm}>Add Activity</button>
                 : <button type="submit" title="Save"><FaSave/></button>}

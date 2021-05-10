@@ -13,10 +13,12 @@ export default function TripList() {
     const [toggle, setToggle] = useState(false)
 
     let {id} = useParams()
+
     useEffect(() => {
         fetch()
+        // eslint-disable-next-line
     }, [toggle])
-
+    //if there's for a user page, get their trip else get all trips in the database
     async function fetch() {
         if (id) {
             let data = await getUserTrips()
@@ -26,19 +28,19 @@ export default function TripList() {
             setTrips(data)
         }
     }
-
+    //handle delete
     async function handleDelete(event) {
         event.preventDefault()
         await deleteATrip(event.target.value)
         setToggle(prevState => !prevState)
     }
     return (
-        <>
+    <>
         <div className="trip-list">
             {trips.map((trip)=> {
                 return (
                     <div key={trip.id} className="trip-item">
-                        {id ? <button onClick={handleDelete} value={trip.id} title="Delete"><MdRemoveCircleOutline/></button> : null}
+                        {id ? <button onClick={handleDelete} value={trip.id} title="Delete"><MdRemoveCircleOutline value={trip.id}/></button> : null}
                         <Link to={`/trips/${trip.id}`}>
                             <h3>{trip.name}</h3>
                             <h5>{trip.location}</h5>
@@ -51,9 +53,8 @@ export default function TripList() {
         <div className="add-button">
             {createTrip ? <CreateTrip/> : null}
             {id ? <>
-            {createTrip? <button className="button add" onClick={()=> setCreateTrip(prevState => !prevState)}><MdCancel/></button>: <button className="add-button add" onClick={()=> setCreateTrip(prevState => !prevState)} title="Add A Trip"><FaPlus/></button>}</>: null}
-            
+            {createTrip? <button className="button add" onClick={()=> setCreateTrip(prevState => !prevState)}><MdCancel/></button>: <button className="add-button add" onClick={()=> setCreateTrip(prevState => !prevState)} title="Add A Trip"><FaPlus/></button>}</>: null} 
         </div>
-        </>
+    </>
     )
 }

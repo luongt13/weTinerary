@@ -32,6 +32,9 @@
     color: #424949;
 }
 
+.trip-item:hover {
+    background-color: #C9A81E;
+}
 
 @media screen and (max-width: 650px) {
     .trip-list {

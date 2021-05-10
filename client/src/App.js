@@ -21,7 +21,6 @@ function App() {
   async function verify() {
     let user = await verifyUser()
     setCurrentUser(user)
-    history.push("/")
   }
 
   async function logout() {
@@ -43,7 +42,7 @@ function App() {
         <TripDetails currentUser={currentUser}/>
       </Route>
       <Route path="/my-trips/:id">
-        <TripList />
+        <TripList/>
       </Route>
       <Route exact path="/">
         <TripList/>

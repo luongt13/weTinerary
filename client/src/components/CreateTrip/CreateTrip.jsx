@@ -22,12 +22,13 @@ export default function CreateTrip() {
         let data = await createATrip(form)
         history.push(`/trips/${data.id}`)
     }
+
     return (
     <form className="container" onChange={handleChange} onSubmit={handleSubmit}>
         <h3>Create A Trip</h3>
-        <input name="name" type="text" placeholder="Enter trip name" value={form.name}/>
-        <input name="location" type="text" placeholder="Enter location" value={form.location}/>
-        <input name="description" type="text" placeholder="Enter description" value={form.description}/>
+        <input name="name" type="text" placeholder="Enter trip name" defaultValue={form.name}/>
+        <input name="location" type="text" placeholder="Enter location" defaultValue={form.location}/>
+        <input name="description" type="text" placeholder="Enter description" defaultValue={form.description}/>
         <button type="submit" title="Save"><FaSave/></button>
     </form>
     )

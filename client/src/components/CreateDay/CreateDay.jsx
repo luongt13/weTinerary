@@ -2,6 +2,7 @@ import {useState} from 'react'
 import {useParams} from "react-router-dom"
 import {createADay} from "../../services/days"
 import "./CreateDay.css"
+
 export default function CreateDay(props) {
     const [showForm, setShowForm] = useState(false)
     const [tripDay, setTripDay] = useState({})
@@ -38,7 +39,7 @@ export default function CreateDay(props) {
         setShowForm(prevState => !prevState)
     }
     return (
-        <div className="container">
+    <div className="container">
             <h3>Add A Day</h3>
         <form onChange={handleDay}>
             <label htmlFor="trip_day">Day</label>
@@ -52,14 +53,8 @@ export default function CreateDay(props) {
             <input name="location" type="text" placeholder="Enter location" value={activityForm.location}/>
             {showForm ? 
                 <button onClick={showActivityForm}>Add Activity</button>
-                : <button type="submit">Save</button>
-            }
+                : <button type="submit">Save</button>}
         </form>
-            {/* {showForm ?
-            <form>
-                <input name="name" type="text" placeholder="name" value={activityForm.name}/>
-                <input name="location" type="text" placeholder="location" value={activityForm.location}/>
-            </form>: <div></div>} */}
-        </div>
+    </div>
     )
 }

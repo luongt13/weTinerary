@@ -22,11 +22,10 @@ export const createATrip = async (body) => {
 
 export const updateATrip = async (id, body) => {
     const res = await api.put(`/trips/${id}`, body)
-    console.log(body)
-    console.log(id)
     return res.data
 }
 
 export const deleteATrip = async (id) => {
     const res = await api.delete(`/trips/${id}`)
+    return res.data
 }

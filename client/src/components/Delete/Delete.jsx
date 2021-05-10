@@ -1,4 +1,5 @@
 import React from 'react'
+import {MdDelete} from "react-icons/md"
 import {deleteADay} from "../../services/days"
 export default function Delete(props) {
 
@@ -8,7 +9,7 @@ export default function Delete(props) {
     }
     return (
         <div>
-            <button onClick={handleDelete}>Delete</button>
+            <button onClick={handleDelete} title="Delete"><MdDelete/></button>
         </div>
     )
 }

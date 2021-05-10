@@ -1,23 +1,19 @@
 import React from 'react'
-import {Link, useHistory} from "react-router-dom"
-import {GrAdd} from "react-icons/gr"
+import {Link} from "react-router-dom"
 import {RiLogoutBoxRLine} from "react-icons/ri"
 import "./Nav.css"
-export default function Nav(props) {
-    let history = useHistory()
-    function handleLogout(){
-        localStorage.clear()
-        history.push("/")
-    }
 
+export default function Nav(props) {
+    //display nav depending if a user is logged in or not
     function displayNav() {
         if (props.currentUser) {
             return (
             <div className="nav">
                 <Link to="/">All Trips</Link>
-                {/* <Link to="/create-trip">Add Trip</Link> */}
-                <Link to="/my-trips">My Trips </Link>
-                <button className="button" onClick={handleLogout}> <RiLogoutBoxRLine/> Logout</button>
+                <Link to={`/my-trips/${props.currentUser.id}`}>My Trips</Link>
+                <div className="logout">
+                <button className="button" onClick={props.logout}> <RiLogoutBoxRLine/> Logout</button>
+                </div>
             </div>
             )
         } else {
@@ -29,11 +25,10 @@ export default function Nav(props) {
             </div>
             )
         }
-    }
-    
+    } 
     return (
-        <>
-            {displayNav()}
-        </>
+    <>
+        {displayNav()}
+    </>
     )
 }

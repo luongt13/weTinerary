@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import {FaSave} from "react-icons/fa"
 import {updateADay} from "../../services/days"
 import {useParams} from "react-router-dom"
 import "./Form.css"
@@ -8,7 +9,6 @@ export default function Form(props) {
     let {name, location, day_id, id} = props.activity
     let params = useParams()
     let trip_id = (parseInt(params.id))
-    console.log(props.activity)
     const [form, setForm] = useState({
             id,
             name: name,
@@ -35,10 +35,9 @@ export default function Form(props) {
             {props.activity ? <form className="edit-form" onChange={handleChange} onSubmit={handleSubmit}> 
                 <input className="name" name="name" type="text" value={form.name}/>
                 <input name="location" type="text" value={form.location}/>
-                <button type="submit">Save</button>
+                <button type="submit" title="Save"><FaSave/></button>
             </form> : 
-            <div></div>
-            
+            <div></div>            
             }
         
         </div>

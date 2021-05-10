@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react'
+import {FaPlus} from "react-icons/fa"
+import {MdDelete} from "react-icons/md"
 import {Link, useParams} from "react-router-dom"
-import {getAllTrips} from "../../services/trips"
+import {deleteATrip, getAllTrips} from "../../services/trips"
 import {getUserTrips} from "../../services/trips"
 import CreateTrip from '../CreateTrip/CreateTrip'
 import "./TripList.css"
@@ -8,28 +10,35 @@ import "./TripList.css"
 export default function TripList() {
     const [trips, setTrips] = useState([])
     const [createTrip, setCreateTrip] = useState(false)
-    // let params = useParams()
-// console.log(params)
+    const [toggle, setToggle] = useState(false)
+
+    let {id} = useParams()
     useEffect(() => {
         fetch()
-    }, [])
+    }, [toggle])
 
     async function fetch() {
-        // if (url === "my-trips") {
-        //     let data = await getUserTrips()
-        //     setTrips(data)
-        // } else {
-        //     let data = await getAllTrips()
-        //     setTrips(data)
-        // }
+        if (id) {
+            let data = await getUserTrips()
+            setTrips(data)
+        } else {
+            let data = await getAllTrips()
+            setTrips(data)
+        }
     }
 
+    async function handleDelete(event) {
+        event.preventDefault()
+        await deleteATrip(event.target.value)
+        setToggle(prevState => !prevState)
+    }
     return (
         <>
         <div className="trip-list">
             {trips.map((trip)=> {
                 return (
                     <div key={trip.id} className="trip-item">
+                        {id ? <button onClick={handleDelete} value={trip.id} title="Delete"><MdDelete/></button> : null}
                         <Link to={`/trips/${trip.id}`}>
                             <h3>{trip.name}</h3>
                             <h5>{trip.location}</h5>
@@ -40,8 +49,8 @@ export default function TripList() {
             })}
         </div>
         <div className="add-button">
-        {createTrip ? null : <CreateTrip/>}
-        {createTrip ?  <button className="button add" onClick={()=> setCreateTrip(prevState => !prevState)}>Add Trip</button>: <button className="add-button add" onClick={()=> setCreateTrip(prevState => !prevState)}>Cancel</button>}
+        {createTrip ? <CreateTrip/> : null}
+        {createTrip ?  <button className="button add" onClick={()=> setCreateTrip(prevState => !prevState)}>Cancel</button>: <button className="add-button add" onClick={()=> setCreateTrip(prevState => !prevState)} title="Add A Trip"><FaPlus/></button>}
         </div>
         </>
     )

@@ -3,9 +3,10 @@ import {registerUser} from "../../services/auth"
 import {useHistory} from "react-router-dom"
 
 export default function SignUp() {
+    //set state for form 
     const [form, setForm] = useState({})
     let history = useHistory()
-
+    //handle change in form and set the form state
     function handleChange(event) {
         let {name, value} = event.target
         setForm((prevState) => ({
@@ -13,7 +14,7 @@ export default function SignUp() {
             [name]: value
         }))
     }
-
+    //handle button submit to register user
     async function handleSubmit(event) {
         event.preventDefault()
         await registerUser(form)

@@ -1,4 +1,7 @@
 import {useState} from 'react'
+import {MdCancel, MdEdit} from "react-icons/md"
+import {TiPlus} from "react-icons/ti"
+import {FaSave} from "react-icons/fa"
 import Form from "../Form/Form"
 import {createActivity} from "../../services/activities"
 import {useParams} from "react-router-dom"
@@ -34,7 +37,7 @@ export default function DayDetails(props) {
                     <input name="name" type="text" value={formInput.name}/>
                     <label htmlFor="location">Where is the activity?</label>
                     <input name="location" type="text" value={formInput.location}/>
-                    <button type="submit">Save</button>
+                    <button type="submit" title="Save"><FaSave/></button>
                 </form>
             )
         }
@@ -58,8 +61,8 @@ export default function DayDetails(props) {
             {displayAdd()}
             {props.currentUser.id === props.trip ?
             <>
-            {showForm  ? <button onClick={() => setShowForm(prevState => !prevState)}>Cancel</button>   :   <button onClick={() => setShowForm(prevState => !prevState)}>Edit</button> }
-            {addActivity  ? <button onClick={() => setAddActivity(prevState => !prevState)}>Cancel</button> : <button onClick={() => setAddActivity(prevState => !prevState)}>Add Activity</button>}
+            {showForm  ? <button onClick={() => setShowForm(prevState => !prevState)} title="Cancel"><MdCancel/></button>   :   <button onClick={() => setShowForm(prevState => !prevState)} title="Edit"><MdEdit/></button> }
+            {addActivity  ? <button onClick={() => setAddActivity(prevState => !prevState)} title="Cancel"><MdCancel/></button> : <button onClick={() => setAddActivity(prevState => !prevState)} title="Add An Activity"><TiPlus/></button>}
             </>
             : null
             

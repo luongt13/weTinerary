@@ -1,4 +1,6 @@
 import {useState, useEffect} from 'react'
+import {FaPlus, FaSave} from "react-icons/fa"
+import {MdCancel, MdEdit} from "react-icons/md"
 import {getAllDays} from "../../services/days"
 import {getATrip, updateATrip} from "../../services/trips"
 import {useParams} from "react-router-dom"
@@ -6,12 +8,15 @@ import CreateDay from '../CreateDay/CreateDay'
 import DayDetails from "../DayDetails/DayDetails"
 import Delete from "../Delete/Delete"
 import "./TripDetails.css"
+
 export default function TripDetails(props) {
     const [days, setDays] = useState()
     const [trip, setTrip] = useState()
     const [createForm, setCreateForm] = useState(false)
     const [editTrip, setEditTrip] = useState(false)
     const [toggle, setToggle] = useState(false)
+    // const [form, setForm] = useState(null)
+
     let {id} = useParams()
     useEffect(() => {
         fetch()
@@ -20,7 +25,7 @@ export default function TripDetails(props) {
     async function fetch() {
         let data = await getATrip(id)
         let res = await getAllDays(id)
-        setTrip(data)
+        await setTrip(data)
         setDays(res)
     }
 
@@ -36,14 +41,14 @@ export default function TripDetails(props) {
         }))
     }
 
-    async function handleSubmit (event) {
+    async function handleSubmit(event) {
         event.preventDefault()
         await updateATrip(id, trip)
         setToggle(prevState => !prevState)
         setEditTrip(prevState => !prevState)
     }
     return (
-        <div className="trip-layout">
+    <div className="trip-layout">
         <div className="trip-overview">
             {trip ? 
             <div className="trip-description">
@@ -52,22 +57,16 @@ export default function TripDetails(props) {
                     <input name="name" type="text" value={trip.name}/>
                     <input name="location" type="text" value={trip.location}/>
                     <input name="description" type="text" value={trip.description}/>
-                    <button className="button" type="submit">Save</button>
-                </form> : <div>
-                <h1>{trip.name}</h1>
-                <h3>{trip.location}</h3>
-                <p>{trip.description}</p>
-                {trip.user_id === props.currentUser.id ? <button onClick={() => setEditTrip(prevState => !prevState)}>Edit Trip Details</button>
-                    : null
-                
-                }
-                </div>
-                
-            }
-                
-            </div>
-            : <div></div>
-            }
+                    <button className="button" type="submit" title="Save"><FaSave/></button>
+                </form> : 
+                <div>
+                    <h1>{trip.name}</h1>
+                    <h3>{trip.location}</h3>
+                    <p>{trip.description}</p>
+                    {trip.user_id === props.currentUser.id ? <button onClick={() => setEditTrip(prevState => !prevState)} title="Edit Trip Information"><MdEdit/></button> : null}
+                </div>   
+                }  
+            </div> : null}
             <div className="day-list">
             {days && days.map((day) => {
                 return (
@@ -76,17 +75,16 @@ export default function TripDetails(props) {
                     <div className="day-details">
                         <DayDetails activities={day.activities} setToggle={setToggle} currentUser={props.currentUser} trip={trip.user_id}/>
                         </div>
-                        {trip.user_id === props.currentUser.id ? <Delete setToggle={setToggle} day_id={day.id} trip_id={day.trip_id}/> : null}
-                        
+                        {trip.user_id === props.currentUser.id ? <Delete setToggle={setToggle} day_id={day.id} trip_id={day.trip_id}/> : null}     
                 </div>
                 )
             })}
             </div>
-            </div>
-            <div className="add-button">
-                {createForm ? <CreateDay setCreateForm={setCreateForm} setToggle={setToggle}/> : null}
-                {createForm && props.currentUser.id === trip.user-id ? <button className="button add" onClick={handleAddDay}>Cancel</button> : <button className="button add" onClick={handleAddDay}>Add Day</button>}
-            </div>
         </div>
+        <div className="add-button">
+            {createForm ? <CreateDay setCreateForm={setCreateForm} setToggle={setToggle}/> : null}
+            {createForm && props.currentUser.id === trip.user_id ? <button className="button add" onClick={handleAddDay} title="Cancel"><MdCancel/></button> : <button className="button add" onClick={handleAddDay} title="Add A Day"><FaPlus/></button>}
+        </div>
+    </div>
     )
 }

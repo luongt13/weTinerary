@@ -3,15 +3,12 @@
     flex-flow: row wrap;
     justify-content: center;
     align-items: flex-start;
-    height: 100vh;
-
 }
 .trip-item {
     width: 21%;
     margin: 15px;
     text-align: left;
     border-radius: 5px;
-    /* box-shadow: 1px 1px 5px 1px black; */
     background-color: white;
     padding: 10px;
     border: 2px solid black;
@@ -34,10 +31,13 @@
     font-size: 12px;
     color: #424949;
 }
-@media screen and (max-width: 600px) {
+
+
+@media screen and (max-width: 650px) {
     .trip-list {
-        flex-direction: column;
+        flex-flow: column nowrap;
         align-items: center;
+        justify-content: flex-start;
     }
 
     .trip-item {

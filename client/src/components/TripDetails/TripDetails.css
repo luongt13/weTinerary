@@ -1,7 +1,7 @@
 .trip-layout {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 90%;
     align-self: center;
 }
 
@@ -15,8 +15,8 @@
     background-color: black;
     color: white;
     padding: 10px;
-    /* height: 50vh; */
     margin: 20px;
+    width: 200px;
 }
 
 .day-list {
@@ -60,5 +60,9 @@
 @media screen and (max-width: 650px) {
     .trip-overview {
         flex-direction: column;
+    }
+
+    .trip-description {
+        width: auto;
     }
 }

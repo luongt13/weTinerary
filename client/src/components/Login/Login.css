@@ -6,6 +6,9 @@
     margin-top: 80px;
 }
 
+.user-form > h1 {
+    color: #C9A81E;
+}
 .user-form > input[type=email], input[type=password] {
     width: 25%;
     margin: 10px;

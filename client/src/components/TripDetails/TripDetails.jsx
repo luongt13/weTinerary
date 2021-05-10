@@ -15,9 +15,9 @@ export default function TripDetails(props) {
     const [createForm, setCreateForm] = useState(false)
     const [editTrip, setEditTrip] = useState(false)
     const [toggle, setToggle] = useState(false)
-    // const [form, setForm] = useState(null)
 
     let {id} = useParams()
+    
     useEffect(() => {
         fetch()
     }, [toggle])
@@ -40,7 +40,6 @@ export default function TripDetails(props) {
             [name]: value
         }))
     }
-
     async function handleSubmit(event) {
         event.preventDefault()
         await updateATrip(id, trip)

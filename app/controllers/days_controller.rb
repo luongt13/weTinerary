@@ -4,7 +4,6 @@ class DaysController < ApiController
     before_action :set_trip, only: [:index, :create]
     #get all the days based on trip id
     def index
-        # @trip = Trip.find(params[:trip_id])
         @days = @trip.days.order(trip_day: :asc)
         render json: @days, include: [:activities]
     end
@@ -14,7 +13,6 @@ class DaysController < ApiController
     end
     #create a day
     def create
-        # @trip = Trip.find(params[:trip_id])
         @day = @trip.days.build(day_params)
         if @day.save
             render json: @day, include: [:activities]

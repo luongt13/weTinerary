@@ -48,6 +48,8 @@ export default function CreateDay(props) {
         </form>
         <form onChange={handleChange} onSubmit={handleSubmit}>
             <h3>Add An Activity</h3>
+            <label>Start time</label>
+            <input name="start" type="time" placeholder="Start time" value={activityForm.start}/>
             <label htmlFor="name">What are you doing?</label>
             <input name="name" type="text" placeholder="Enter activity name" value={activityForm.name}/>
             <label htmlFor="location">Where is this activity?</label>

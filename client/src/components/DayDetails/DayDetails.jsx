@@ -6,12 +6,10 @@ import Form from "../Form/Form"
 import {createActivity} from "../../services/activities"
 import {useParams} from "react-router-dom"
 import {updateADay} from "../../services/days"
+import "./DayDetails.css"
 
 export default function DayDetails(props) {
-    const [editForm, setEditForm] = useState([])
-
     const [activities, setActivities] = useState(props.activities)
-
     const [showForm, setShowForm] = useState(false)
     const [addActivity, setAddActivity] = useState(false)
     const [formInput, setFormInput] = useState({})
@@ -42,8 +40,7 @@ export default function DayDetails(props) {
         setActivities(updatedActivities)
     }
 
-    async function handleEdit(e) {
-        e.preventDefault()
+    async function handleEdit() {
         await updateADay(id, day_id, {activities_attributes: activities})
         setShowForm(prevState => !prevState)
         props.setToggle(prevState => !prevState)
@@ -52,8 +49,8 @@ export default function DayDetails(props) {
     async function handleSubmit(event){
         event.preventDefault()
         await createActivity(id, day_id, formInput)
-        props.setToggle(prevState => !prevState)
         setAddActivity(prevState => !prevState)
+        props.setToggle(prevState => !prevState)
         setFormInput("")
     }
 
@@ -61,6 +58,8 @@ export default function DayDetails(props) {
         if (addActivity) {
             return (
                 <form onChange={handleChange} onSubmit={handleSubmit}>
+                    <label htmlFor="start">Start time</label>
+                    <input name="start" type="time" value={formInput.start}/>
                     <label htmlFor="name">What's the activity?</label>
                     <input name="name" type="text" value={formInput.name}/>
                     <label htmlFor="location">Where is the activity?</label>
@@ -73,30 +72,26 @@ export default function DayDetails(props) {
 
     return (
         <div>
-            <form className="edit-form">
             {props.activities && activities.map((activity) => {
                 return (
                     <div key={activity.id}>
-                        {showForm ? <Form activity={activity} setToggle={props.setToggle} setShowForm={setShowForm} setEditForm={setEditForm} editForm={editForm} handleEdit={handleEdit} handleEditChange={handleEditChange}/> :
-                        <div>
+                        {showForm ? <Form activity={activity} handleEdit={handleEdit} handleEditChange={handleEditChange}/> :
+                        <div className="activity-details">
+                            <h6>{activity.start}</h6>
                             <h3>{activity.name}</h3>
                             <p>{activity.location}</p>
                         </div>
-                    } 
+                        } 
                     </div>
                 )
             }) }
-
-            {showForm ? <button type="submit" title="Save" onClick={handleEdit}><FaSave/></button> : null}
-            </form>
-
+                {showForm ? <button title="Save" onClick={handleEdit}><FaSave/></button> : null}
             {displayAdd()}
             {props.currentUser.id === props.trip ?
             <>
             {showForm  ? <button onClick={() => setShowForm(prevState => !prevState)} title="Cancel"><MdCancel/></button>   :   <button onClick={() => setShowForm(prevState => !prevState)} title="Edit"><MdEdit/></button> }
             {addActivity  ? <button onClick={() => setAddActivity(prevState => !prevState)} title="Cancel"><MdCancel/></button> : <button onClick={() => setAddActivity(prevState => !prevState)} title="Add An Activity"><TiPlus/></button>}
-            </> 
-            : null}
+            </> : null}
         </div>
     )
 }

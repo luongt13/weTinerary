@@ -7,7 +7,11 @@
     box-shadow: 0 4px 2px -2px black;
     font-weight: bold;
 }
-
+.nav > h3 {
+    color: white;
+    padding: 10px;
+    margin-left: 15px;
+}
 .nav > a, .logout > .button {
     margin: 15px;
     text-decoration: none;
@@ -23,7 +27,6 @@
 .logout > .button {
     background-color: transparent;
     border: none;
-    /* flex-grow: 1; */
     text-align: right;
 }
 

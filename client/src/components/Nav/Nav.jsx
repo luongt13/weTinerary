@@ -9,6 +9,7 @@ export default function Nav(props) {
         if (props.currentUser) {
             return (
             <div className="nav">
+                <h3>weTinerary</h3>
                 <Link to="/">All Trips</Link>
                 <Link to={`/my-trips/${props.currentUser.id}`}>My Trips</Link>
                 <div className="logout">
@@ -19,6 +20,7 @@ export default function Nav(props) {
         } else {
             return (
             <div className="nav">
+                <h3>weTinerary</h3>
                 <Link to="signup">Sign Up</Link>
                 <Link to="login">Login</Link>
                 <Link to="/">All Trips</Link>

@@ -23,6 +23,7 @@ export default function SignUp() {
     
     return (
     <form className="user-form" onChange={handleChange} onSubmit={handleSubmit}>
+        <h1>SignUp</h1>
         <input name="email" type="email" placeholder="email" value={form.email}/>
         <input name="password" type="password" placeholder="password" value={form.password}/>
         <input name="password_confirmation" type="password" placeholder="confirm password" value={form.password_confirmation}/>

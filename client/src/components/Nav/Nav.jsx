@@ -9,21 +9,24 @@ export default function Nav(props) {
         if (props.currentUser) {
             return (
             <div className="nav">
-                <h3>weTinerary</h3>
+                <img src="/images/wetinenary.png" className="logo" alt="wetinerary logo"/>
                 <Link to="/">All Trips</Link>
                 <Link to={`/my-trips/${props.currentUser.id}`}>My Trips</Link>
                 <div className="logout">
-                <button className="button" onClick={props.logout}> <RiLogoutBoxRLine/> Logout</button>
+                <button className="button" onClick={props.logout}> <RiLogoutBoxRLine/>Logout</button>
                 </div>
             </div>
             )
         } else {
             return (
             <div className="nav">
-                <h3>weTinerary</h3>
-                <Link to="signup">Sign Up</Link>
-                <Link to="login">Login</Link>
+                <img src="/images/wetinenary.png" className="logo" alt="wetinerary logo"/>
                 <Link to="/">All Trips</Link>
+                <div className="nav forms">
+                    <Link to="/signup">Sign Up</Link>
+                    <Link to="/login">Login</Link>
+                </div>
+
             </div>
             )
         }

@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import {FaPlus} from "react-icons/fa"
-import {MdDelete} from "react-icons/md"
+import {MdDelete, MdCancel} from "react-icons/md"
 import {Link, useParams} from "react-router-dom"
 import {deleteATrip, getAllTrips} from "../../services/trips"
 import {getUserTrips} from "../../services/trips"
@@ -50,7 +50,9 @@ export default function TripList() {
         </div>
         <div className="add-button">
             {createTrip ? <CreateTrip/> : null}
-            {createTrip ?  <button className="button add" onClick={()=> setCreateTrip(prevState => !prevState)}>Cancel</button>: <button className="add-button add" onClick={()=> setCreateTrip(prevState => !prevState)} title="Add A Trip"><FaPlus/></button>}
+            {id ? <>
+            {createTrip? <button className="button add" onClick={()=> setCreateTrip(prevState => !prevState)}><MdCancel/></button>: <button className="add-button add" onClick={()=> setCreateTrip(prevState => !prevState)} title="Add A Trip"><FaPlus/></button>}</>: null}
+            
         </div>
         </>
     )

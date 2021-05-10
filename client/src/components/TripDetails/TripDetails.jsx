@@ -83,7 +83,12 @@ export default function TripDetails(props) {
         </div>
         <div className="add-button">
             {createForm ? <CreateDay setCreateForm={setCreateForm} setToggle={setToggle}/> : null}
-            {createForm && props.currentUser.id === trip.user_id ? <button className="button add" onClick={handleAddDay} title="Cancel"><MdCancel/></button> : <button className="button add" onClick={handleAddDay} title="Add A Day"><FaPlus/></button>}
+            {trip && props.currentUser && props.currentUser.id === trip.user_id ? 
+            <> 
+            {createForm ? <button className="button add" onClick={handleAddDay} title="Cancel"><MdCancel/></button> : <button className="button add" onClick={handleAddDay} title="Add A Day"><FaPlus/></button>}
+            </> : null
+        } 
+            
         </div>
     </div>
     )

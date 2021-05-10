@@ -19,6 +19,7 @@ export default function Login(props) {
     }
     return (
     <form className="user-form" onChange={handleChange} onSubmit={handleSubmit}>
+        <h1>Login</h1>
         <input name="email" type="email" placeholder="email" value={form.email}/>
         <input name="password" type="password" placeholder="password" value={form.password}/>
         <button type="submit">Login</button>

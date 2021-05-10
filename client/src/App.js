@@ -26,8 +26,8 @@ function App() {
 
   async function logout() {
     await localStorage.clear()
-    setCurrentUser(null)
     history.push("/")
+    setCurrentUser(null)
   }
 
   return (

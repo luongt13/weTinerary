@@ -42,6 +42,7 @@ export default function DayDetails(props) {
             )
         }
     }
+    console.log(props.currentUser.id)
 
     return (
         <div>
@@ -63,12 +64,8 @@ export default function DayDetails(props) {
             <>
             {showForm  ? <button onClick={() => setShowForm(prevState => !prevState)} title="Cancel"><MdCancel/></button>   :   <button onClick={() => setShowForm(prevState => !prevState)} title="Edit"><MdEdit/></button> }
             {addActivity  ? <button onClick={() => setAddActivity(prevState => !prevState)} title="Cancel"><MdCancel/></button> : <button onClick={() => setAddActivity(prevState => !prevState)} title="Add An Activity"><TiPlus/></button>}
-            </>
-            : null
-            
-            }
-        
-        
+            </> 
+            : null}
         </div>
     )
 }

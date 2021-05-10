@@ -43,14 +43,14 @@ export default function TripList() {
                             <h3>{trip.name}</h3>
                             <h5>{trip.location}</h5>
                             <p>{trip.description}</p>
-                            </Link>
+                        </Link>
                     </div>
                 )
             })}
         </div>
         <div className="add-button">
-        {createTrip ? <CreateTrip/> : null}
-        {createTrip ?  <button className="button add" onClick={()=> setCreateTrip(prevState => !prevState)}>Cancel</button>: <button className="add-button add" onClick={()=> setCreateTrip(prevState => !prevState)} title="Add A Trip"><FaPlus/></button>}
+            {createTrip ? <CreateTrip/> : null}
+            {createTrip ?  <button className="button add" onClick={()=> setCreateTrip(prevState => !prevState)}>Cancel</button>: <button className="add-button add" onClick={()=> setCreateTrip(prevState => !prevState)} title="Add A Trip"><FaPlus/></button>}
         </div>
         </>
     )

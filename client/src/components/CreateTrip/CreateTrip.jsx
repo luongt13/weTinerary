@@ -28,7 +28,7 @@ export default function CreateTrip() {
         <input name="name" type="text" placeholder="Enter trip name" value={form.name}/>
         <input name="location" type="text" placeholder="Enter location" value={form.location}/>
         <input name="description" type="text" placeholder="Enter description" value={form.description}/>
-        <button type="submit" type="Save"><FaSave/></button>
+        <button type="submit" title="Save"><FaSave/></button>
     </form>
     )
 }

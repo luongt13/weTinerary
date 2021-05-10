@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import {FaPlus} from "react-icons/fa"
-import {MdDelete, MdCancel} from "react-icons/md"
+import {MdCancel, MdRemoveCircleOutline} from "react-icons/md"
 import {Link, useParams} from "react-router-dom"
 import {deleteATrip, getAllTrips} from "../../services/trips"
 import {getUserTrips} from "../../services/trips"
@@ -38,7 +38,7 @@ export default function TripList() {
             {trips.map((trip)=> {
                 return (
                     <div key={trip.id} className="trip-item">
-                        {id ? <button onClick={handleDelete} value={trip.id} title="Delete"><MdDelete/></button> : null}
+                        {id ? <button onClick={handleDelete} value={trip.id} title="Delete"><MdRemoveCircleOutline/></button> : null}
                         <Link to={`/trips/${trip.id}`}>
                             <h3>{trip.name}</h3>
                             <h5>{trip.location}</h5>

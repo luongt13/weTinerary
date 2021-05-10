@@ -1,5 +1,5 @@
 import React from 'react'
-import {MdDelete} from "react-icons/md"
+import {MdRemoveCircleOutline} from "react-icons/md"
 import {deleteADay} from "../../services/days"
 
 export default function Delete(props) {
@@ -9,7 +9,7 @@ export default function Delete(props) {
     }
     return (
         <div>
-            <button onClick={handleDelete} title="Delete"><MdDelete/></button>
+            <button onClick={handleDelete} title="Delete"><MdRemoveCircleOutline/></button>
         </div>
     )
 }

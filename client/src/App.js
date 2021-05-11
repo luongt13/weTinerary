@@ -7,7 +7,6 @@ import TripList from "./components/TripList/TripList.jsx"
 import TripDetails from "./components/TripDetails/TripDetails.jsx"
 import {verifyUser} from "./services/auth.js"
 import {useHistory} from "react-router-dom"
-
 import './App.css';
 
 function App() {
@@ -42,7 +41,7 @@ function App() {
         <TripDetails currentUser={currentUser}/>
       </Route>
       <Route path="/my-trips/:id">
-        <TripList/>
+        <TripList currentUser={currentUser}/>
       </Route>
       <Route exact path="/">
         <TripList/>

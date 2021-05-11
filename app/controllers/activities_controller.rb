@@ -8,6 +8,9 @@ class ActivitiesController < ApiController
         render json: @activities
     end
 
+    def show
+        render json: @activities
+    end
 
     def create
         @day = Day.find(params[:day_id])

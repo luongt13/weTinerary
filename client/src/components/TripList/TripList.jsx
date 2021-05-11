@@ -9,7 +9,7 @@ import Search from "../Search/Search"
 
 import "./TripList.css"
 
-export default function TripList() {
+export default function TripList(props) {
     const [trips, setTrips] = useState([])
     const [createForm, setCreateForm] = useState(false)
     const [toggle, setToggle] = useState(false)
@@ -21,16 +21,16 @@ export default function TripList() {
     useEffect(() => {
         fetch()
         // eslint-disable-next-line
-    }, [toggle])
+    }, [toggle, props.currentUser])
     //if there's for a user page, get their trip else get all trips in the database
     async function fetch() {
-        if (id) {
-            let data = await getUserTrips()
-            setTrips(data)
-        } else {
+        if (!id) {
             let data = await getAllTrips()
             setTrips(data)
-        }
+        } else if (props.currentUser) {
+            let data = await getUserTrips()
+            setTrips(data)
+        } 
     }
     //handle delete
     async function handleDelete(event) {

@@ -71,9 +71,7 @@ export default function DayDetails(props) {
                     <button type="submit" title="Save"><FaSave/></button>
                 </form>
             )
-        } else {
-            <div></div>
-        }
+        } else {<div></div>}
     }
 
     function displayEditButtons() {

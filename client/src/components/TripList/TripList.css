@@ -1,3 +1,12 @@
+.page-intro > h1{
+    color: #C9A81E;
+    margin-bottom: 0;
+}
+
+.page-intro > h4 {
+    color: white;
+    margin-top: 0;;
+}
 .search-list {
     width: 80%;
     align-self: center;

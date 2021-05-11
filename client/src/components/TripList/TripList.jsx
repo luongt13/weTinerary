@@ -39,7 +39,9 @@ export default function TripList(props) {
         setToggle(prevState => !prevState)
     }
     return (
-    <>
+    <div className="page-intro">
+        <h1>weTinerary</h1>
+        <h4>get inspirations for your next adventure</h4>
         <div className="search-bar">
             {id ? null : <Search setFilteredTrips={setFilteredTrips}/>}    
         </div>
@@ -73,6 +75,6 @@ export default function TripList(props) {
             {createForm ? <CreateTrip/> : null}
             {id ? <AddButtons createForm={createForm} setCreateForm={setCreateForm}/>: null} 
         </div>
-    </>
+    </div>
     )
 }

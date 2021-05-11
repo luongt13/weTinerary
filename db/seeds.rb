@@ -25,8 +25,8 @@ activity11 = {day_id: day3, name: 'Lunch', location: 'French Market', start: '12
 activity12 = {day_id: day3, name: 'Check-out', location: 'Hotel', start: '15:00'}
 
 
-user1 = {email: 'tester@email.com', password: '1234567'}
-user2 = {email: 'anothertest@email.com', password: '1234567'}
+user1 = User.create!{email: 'tester@email.com', password: '1234567'}
+user2 = User.create!{email: 'anothertest@email.com', password: '1234567'}
 
 trip1 = Trip.create!{user_id: user1, name: 'Bach Party', location: "Chicago", description: "girls weekend trip"}
 trip2 = Trip.create!{user_id: user1, name: 'Camping in PA', location: 'Pocono Mountain', description: "quick weekend trip"}

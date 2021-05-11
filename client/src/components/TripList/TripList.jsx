@@ -47,7 +47,7 @@ export default function TripList() {
             {searchTerm.length > 1 && filteredTrips.map((trip) => {
                     return (
                         <div className="search-item" key={trip.id}>
-                            <Link to={`/trips/${trip.id}`}>
+                            <Link to={`/trips/${trip.id}`} className="item">
                                 <h3>{trip.name}</h3>
                                 <h5>{trip.location}</h5>
                             </Link>
@@ -60,7 +60,7 @@ export default function TripList() {
                 return (
                     <div key={trip.id} className="trip-item">
                         {id ? <button onClick={handleDelete} value={trip.id} title="Delete"><MdRemoveCircleOutline value={trip.id}/></button> : null}
-                        <Link to={`/trips/${trip.id}`}>
+                        <Link to={`/trips/${trip.id}`} className="item">
                             <h3>{trip.name}</h3>
                             <h5>{trip.location}</h5>
                             <p>{trip.description}</p>

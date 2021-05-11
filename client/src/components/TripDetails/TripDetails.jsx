@@ -1,12 +1,13 @@
 import {useState, useEffect} from 'react'
-import {FaPlus, FaSave} from "react-icons/fa"
-import {MdCancel, MdEdit} from "react-icons/md"
+import {FaSave} from "react-icons/fa"
+import { MdEdit} from "react-icons/md"
 import {getAllDays} from "../../services/days"
 import {getATrip, updateATrip} from "../../services/trips"
 import {useParams} from "react-router-dom"
 import CreateDay from '../CreateDay/CreateDay'
 import DayDetails from "../DayDetails/DayDetails"
-import Delete from "../Delete/Delete"
+import Delete from "../Delete/DeleteDay"
+import AddButtons from "../AddButtons/AddButtons"
 import "./TripDetails.css"
 
 export default function TripDetails(props) {
@@ -33,9 +34,6 @@ export default function TripDetails(props) {
     async function fetchDays() {
         let res = await getAllDays(id)
         setDays(res)
-    }
-    function handleAddDay(){
-        setCreateForm(prevState => !prevState)
     }
 
     function handleChange(event) {
@@ -111,9 +109,7 @@ export default function TripDetails(props) {
         <div className="add-button">
             {createForm ? <CreateDay setCreateForm={setCreateForm} setToggle={setToggle}/> : null}
             {trip && props.currentUser && props.currentUser.id === trip.user_id ? 
-            <> 
-            {createForm ? <button className="button add" onClick={handleAddDay} title="Cancel"><MdCancel/></button> : <button className="button add" onClick={handleAddDay} title="Add A Day"><FaPlus/></button>}
-            </> : null} 
+            <AddButtons setCreateForm={setCreateForm} createForm={createForm}/> : null} 
         </div>
     </div>
     )

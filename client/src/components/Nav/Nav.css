@@ -6,6 +6,7 @@
     align-items: center;
     box-shadow: 0 4px 2px -2px black;
     font-weight: bold;
+    padding: 5px;
 }
 
 .nav > a, .logout > .button {

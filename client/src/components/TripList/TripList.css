@@ -1,3 +1,22 @@
+.search-list {
+    width: 80%;
+    align-self: center;
+}
+
+.search-item {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.search-item > a {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
 .trip-list {
     display: flex;
     flex-flow: row wrap;
@@ -14,25 +33,28 @@
     border: 2px solid black;
 }
 
-.trip-item > a {
+.search-item > a > h3, .search-item > a > h5, .search-item > a > p {
+    margin: 0 5px 0 5px;
+}
+.trip-item > a, .search-item > a {
     text-decoration: none;
 }
 
-.trip-item > a > h3 {
+.trip-item > a > h3, .search-item > a > h3 {
     text-transform: uppercase;
     color: black;
 }
 
-.trip-item > a > h5 {
+.trip-item > a > h5, .search-item > a > h5 {
     color: black;
 }
 
-.trip-item > a > p {
+.trip-item > a > p, .search-item > a > p {
     font-size: 12px;
     color: #424949;
 }
 
-.trip-item:hover {
+.trip-item:hover, .search-item:hover {
     background-color: #C9A81E;
 }
 

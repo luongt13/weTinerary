@@ -1,5 +1,5 @@
 class TripsController < ApiController
-    skip_before_action :authenticate_user!, only: [:all_trips, :show]
+    skip_before_action :authenticate_user!, only: [:all_trips, :show, :search]
     before_action :set_trip, only: [:show, :update, :destroy]
 
     #user logged in

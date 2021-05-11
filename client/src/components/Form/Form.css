@@ -6,14 +6,15 @@ form {
 }
 
 input[type=text], input[type=number], input[type=time] {
-    background-color: #D1F2EB;
+    /* background-color: #D1F2EB; */
     border: none;
     margin: 10px 0 10px 0;
     padding: 10px;
     width: 80%;
+    border-bottom: 2px solid #C9A81E;
 }
 
-input[name=name] {
+#name {
     font-size: 18px;
     font-weight: bold;
 }

@@ -19,7 +19,7 @@ export default function Form(props) {
             {props.activity ? 
             <>
             <input name="start" type="time" defaultValue={props.activity.start}/>
-            <input className="name" name="name" type="text" defaultValue={props.activity.name}/>
+            <input id="name" name="name" type="text" defaultValue={props.activity.name}/>
             <input name="location" type="text" defaultValue={props.activity.location}/>
             </> : <div></div> }  
             <button title="Delete" onClick={handleDelete}><MdRemoveCircleOutline/></button>

@@ -9,7 +9,6 @@ export default function Search(props) {
 
     async function handleSearch(value) {
         let res = await searchTrip({location: value})
-        console.log(res)
         setFilteredTrips(res)
     }
     // function handleChange(e) {
@@ -24,7 +23,6 @@ export default function Search(props) {
     //     )
     // }
     function handleChange(e) {
-        console.log(e.target.value)
         setTerm(e.target.value)
         handleSearch(e.target.value)
     }
@@ -32,7 +30,6 @@ export default function Search(props) {
     return (
         <div className="search-input">
             <input type='text' name='search' id='search' placeholder='Search location' value={term} onChange={handleChange}/>
-            <button onClick={handleSearch}>Search</button>
         </div>
     )
 }

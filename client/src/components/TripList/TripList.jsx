@@ -14,7 +14,7 @@ export default function TripList(props) {
     const [createForm, setCreateForm] = useState(false)
     const [toggle, setToggle] = useState(false)
 
-    const [searchTerm, setSearchTerm] = useState("")
+    // const [searchTerm, setSearchTerm] = useState("")
     const [filteredTrips, setFilteredTrips] = useState([])
     let {id} = useParams()
 
@@ -41,7 +41,7 @@ export default function TripList(props) {
     return (
     <>
         <div className="search-bar">
-            {id ? null : <Search setSearchTerm={setSearchTerm} searchTerm={searchTerm} setFilteredTrips={setFilteredTrips} trips={trips}/>}    
+            {id ? null : <Search setFilteredTrips={setFilteredTrips}/>}    
         </div>
         <div className="search-list">
             {filteredTrips && filteredTrips.map((trip) => {

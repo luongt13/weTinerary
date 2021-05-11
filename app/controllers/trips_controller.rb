@@ -12,6 +12,11 @@ class TripsController < ApiController
         @trips = Trip.all
         render json: @trips
     end
+
+    def search 
+        @results = Trip.location_similarity(params[:location])
+        render json: @results
+    end
     #show a specific trip
     def show
         render json: @trip, include: [:days, :activities]

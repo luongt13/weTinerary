@@ -44,7 +44,7 @@ export default function TripList(props) {
             {id ? null : <Search setSearchTerm={setSearchTerm} searchTerm={searchTerm} setFilteredTrips={setFilteredTrips} trips={trips}/>}    
         </div>
         <div className="search-list">
-            {searchTerm.length > 1 && filteredTrips.map((trip) => {
+            {filteredTrips && filteredTrips.map((trip) => {
                     return (
                         <div className="search-item" key={trip.id}>
                             <Link to={`/trips/${trip.id}`} className="item">

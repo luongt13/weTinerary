@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   get "/all-trips", to: "trips#all_trips"
+  post "/search", to: "trips#search"
 
   devise_for :users, controllers: { registrations: 'registrations' }
   namespace :api do

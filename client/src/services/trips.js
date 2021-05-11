@@ -29,3 +29,9 @@ export const deleteATrip = async (id) => {
     const res = await api.delete(`/trips/${id}`)
     return res.data
 }
+
+export const searchTrip = async (body) => {
+    const res = await api.post("/search", body)
+    console.log(body)
+    return res.data
+}

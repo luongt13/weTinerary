@@ -43,7 +43,7 @@ export default function CreateDay(props) {
     <div className="container">
         <form onChange={handleDay}>
             <h3>Add A Day</h3>
-            <input name="trip_day" type="number" placeholder="Enter day" defaultValue={tripDay.trip_day}/>
+            <input name="trip_day" type="number" placeholder="Enter day" min="1" max="99" defaultValue={tripDay.trip_day}/>
         </form>
         <form onChange={handleChange} onSubmit={handleSubmit}>
             <h4>Add An Activity</h4>

@@ -32,7 +32,9 @@ export default function Nav(props) {
         } else {
             return (
             <div className="nav">
+                <Link to ="/trips">
                 <img src="/images/wet-logo.png" className="logo" alt="wetinerary logo"/>
+                </Link>
                 <div className="nav forms">
                     <Link to="/">Login/Sign up</Link>
                 </div>

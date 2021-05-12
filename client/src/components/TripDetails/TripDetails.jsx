@@ -8,6 +8,7 @@ import CreateDay from '../CreateDay/CreateDay'
 import DayDetails from "../DayDetails/DayDetails"
 import Delete from "../Delete/DeleteDay"
 import AddButtons from "../AddButtons/AddButtons"
+import TripInformation from "../TripInformation/TripInformation.jsx"
 import "./TripDetails.css"
 
 export default function TripDetails(props) {
@@ -68,9 +69,7 @@ export default function TripDetails(props) {
             } else {
                 return (
                     <div className="trip-description">
-                        <h1>{trip.name}</h1>
-                        <h3>{trip.location}</h3>
-                        <p>{trip.description}</p>
+                        <TripInformation trip={trip}/>
                         {props.currentUser && trip.user_id === props.currentUser.id ? 
                         <button onClick={() => setEditTrip(prevState => !prevState)} title="Edit Trip Information"><MdEdit/></button>
                         : <div></div>}

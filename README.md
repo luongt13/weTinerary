@@ -153,12 +153,38 @@ src
 
 ## Code Showcase
 
-> Use this section to include a brief code snippet of functionality that you are proud of and a brief description.
-TBD
+```javascript
+function displayList() {
+        if (searchTerm.length > 2 && filteredTrips) {
+            return (
+                filteredTrips.map((trip) => {
+                    return (
+                        <div className="trip-item" key={trip.id}>
+                            <Link to={`/trips/${trip.id}`} className="item">
+                                <TripInformation trip={trip}/>
+                            </Link>
+                        </div>
+                    )
+                })
+            )
+        } else if (trips) {
+            return (
+                trips.map((trip)=> {
+                    return (
+                        <div key={trip.id} className="trip-item">
+                            {id ? <button onClick={handleDelete} value={trip.id} title="Delete"><MdRemoveCircleOutline value={trip.id}/></button> : null}
+                            <Link to={`/trips/${trip.id}`} className="item">
+                                <TripInformation trip={trip}/>
+                            </Link>
+                        </div>
+                    )
+                })
+            )
+        }
+    }
+```
 
 ## Code Issues & Resolutions
-
-> Use this section to list of all major issues encountered and their resolution.
 
 ```javascript
 
@@ -173,8 +199,42 @@ async function fetch() {
     }
 ```
 issue: reuse trip list for all trips and specific user trips
+
 resolution: conditional 
 
+```javascript
+async function handleSubmit(event) {
+        event.preventDefault()
+        let res = await loginUser(form)
+        props.verify()
+        if (res.token) {
+            history.push("/trips")
+        } else {
+            alert("Invalid email and/or password")
+        }
+    }
+```
+issue: users don't know why they could not login
+
+resolution: conditional to see if a token is returned
+
+```javascript
+  async function handleSubmit(event) {
+        event.preventDefault()
+        let res = await registerUser(form)
+        if (res.errors) {
+            for (const [key, value] of Object.entries(res.errors)) {
+                console.log(`${key}: ${value}`)
+                alert(`${key} ${value}`)
+            }
+        } else {
+            props.setToggleForm(prevState => !prevState)
+        }
+    }
+```
+issue: users don't know why they can't sign up
+
+resolution: conditional to see if any errors come back
 
 ### Resources
 - [Trigram](https://pganalyze.com/blog/similarity-in-postgres-and-ruby-on-rails-using-trigrams)

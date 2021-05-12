@@ -5,6 +5,7 @@ import {deleteATrip, getAllTrips} from "../../services/trips"
 import {getUserTrips} from "../../services/trips"
 import CreateTrip from '../CreateTrip/CreateTrip'
 import AddButtons from "../AddButtons/AddButtons.jsx"
+import TripInformation from "../TripInformation/TripInformation.jsx"
 import Search from "../Search/Search"
 
 import "./TripList.css"
@@ -46,8 +47,7 @@ export default function TripList(props) {
                     return (
                         <div className="trip-item" key={trip.id}>
                             <Link to={`/trips/${trip.id}`} className="item">
-                                <h3>{trip.name}</h3>
-                                <h5>{trip.location}</h5>
+                                <TripInformation trip={trip}/>
                             </Link>
                         </div>
                     )
@@ -60,9 +60,7 @@ export default function TripList(props) {
                         <div key={trip.id} className="trip-item">
                             {id ? <button onClick={handleDelete} value={trip.id} title="Delete"><MdRemoveCircleOutline value={trip.id}/></button> : null}
                             <Link to={`/trips/${trip.id}`} className="item">
-                                <h3>{trip.name}</h3>
-                                <h5>{trip.location}</h5>
-                                <p>{trip.description}</p>
+                                <TripInformation trip={trip}/>
                             </Link>
                         </div>
                     )

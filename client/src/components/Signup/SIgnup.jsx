@@ -30,6 +30,7 @@ export default function SignUp(props) {
     //         <h4>share your itinerary and get inspirations for your next adventure</h4>
     //         <Link to="/trips"><button className="create-btn">Get Inspired</button></Link>
     //     </div>
+    <div className="form-layout">
         <form className="user-form" onChange={handleChange} onSubmit={handleSubmit}>
             <h1>Sign Up</h1>
             <input name="email" type="email" placeholder="email" defaultValue={form.email}/>
@@ -37,10 +38,10 @@ export default function SignUp(props) {
             <input name="password_confirmation" type="password" placeholder="confirm password" defaultValue={form.password_confirmation}/>
             <button type="submit" className="submit-btn">Sign Up</button>
             {/* <Link to="/login"><button className="create-btn">Login</button></Link> */}
-            <button className="create-btn" onClick={() => props.setToggleForm(prevState => !prevState)}>Login</button>
-
+           
         </form>
-    // </div>
+         <button className="create-btn" onClick={() => props.setToggleForm(prevState => !prevState)}>Login</button>
+    </div>
     )
 }
 

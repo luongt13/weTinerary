@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom"
 import {MdRemoveCircleOutline} from "react-icons/md"
 import {deleteActivity} from "../../services/activities"
-import "./Form.css"
+import "./Edit.css"
 
 export default function Form(props) {
     let {id, day_id} = props.activity

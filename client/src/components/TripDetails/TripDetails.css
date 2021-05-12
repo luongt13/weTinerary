@@ -24,6 +24,8 @@
 .trip-description > h1{
     text-transform: uppercase;
     margin-top: 0;
+    font-size: 1.5rem;
+    word-wrap: break-word;
 }
 
 .day-list {

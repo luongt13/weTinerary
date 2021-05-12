@@ -20,6 +20,7 @@ export default function TripList(props) {
 
     useEffect(() => {
         fetch()
+        return () => {}
         // eslint-disable-next-line
     }, [toggle, props.currentUser])
     //if there's for a user page, get their trip else get all trips in the database
@@ -40,11 +41,11 @@ export default function TripList(props) {
     }
     return (
     <>
-        <div div className="page-intro">
+        <div className="page-intro">
             <h1>weTinerary</h1>
             {id ? <h4>share your next adventure</h4> : <h4>get inspirations for your next adventure</h4>}
             <div className="search-bar">
-                {id ? null : <Search setFilteredTrips={setFilteredTrips}/>}    
+                {id ? <div></div> : <Search setFilteredTrips={setFilteredTrips}/>}    
             </div>
         </div>
         <div className="search-list">

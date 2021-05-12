@@ -1,15 +1,44 @@
-.form-layout {
-    width: 50%;
+.intro-container {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    justify-content: center;
+}
+
+.intro-card {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-content: center;
+    text-align: left;
 }
-.user-form {
-    width: 100%;
+
+.intro-card > h4 {
+    color: white;
+}
+
+.intro-card >h1 {
+    color: #C9A81E;
+}
+
+@media screen and (max-width: 650px) {
+    .intro-container {
+        flex-direction: column;
+        align-content: center;
+    }
+
+    .intro-card {
+        width: 80%;
+    }
+}
+
+/* .user-form {
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 80px;
+    align-self: center;
 }
 
 .user-form > h1 {
@@ -36,11 +65,10 @@
     background-color: #006700;
 }
 @media screen and (max-width: 850px) {
-    .form-layout {
+    .user-form {
         width: 100%;
     }
-    
     .user-form > input[type=email], input[type=password]  {
         width: 80%;
     }
-}
+} */

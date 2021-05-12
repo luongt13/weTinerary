@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import {MdCancel, MdEdit} from "react-icons/md"
 import {TiPlus} from "react-icons/ti"
 import {FaSave} from "react-icons/fa"
-import Form from "../Form/Form"
+import Edit from "../Edit/Edit.jsx"
 import {createActivity} from "../../services/activities"
 import {useParams} from "react-router-dom"
 import {updateADay} from "../../services/days"
@@ -112,7 +112,7 @@ export default function DayDetails(props) {
             {props.activities && activities.map((activity) => {
                 return (
                     <div key={activity.id}>
-                        {showForm ? <Form activity={activity} handleEdit={handleEdit} handleEditChange={handleEditChange} setToggle={props.setToggle} setShowForm={setShowForm}/> :
+                        {showForm ? <Edit activity={activity} handleEdit={handleEdit} handleEditChange={handleEditChange} setToggle={props.setToggle} setShowForm={setShowForm}/> :
                         <div className="activity-details">
                             <h6>{activity.start}</h6>
                             <h3>{activity.name}</h3>

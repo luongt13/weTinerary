@@ -26,13 +26,6 @@ export default function DayDetails(props) {
     function setUpdated() {
         setActivities(props.activities)
     }
-    // function handleChange(event) {
-    //     let {name, value} = event.target
-    //     setFormInput((prevState) => ({
-    //         ...prevState,
-    //         [name]: value
-    //     }))
-    // }
     //handle edit changes for the activities
     function handleEditChange(event, id) {
         let {name, value} = event.target
@@ -55,30 +48,6 @@ export default function DayDetails(props) {
         setShowForm(prevState => !prevState)
         props.setToggle(prevState => !prevState)
     }
-
-    // async function handleSubmit(event){
-    //     event.preventDefault()
-    //     await createActivity(id, day_id, formInput)
-    //     setAddActivity(prevState => !prevState)
-    //     props.setToggle(prevState => !prevState)
-    //     setFormInput("")
-    // }
-
-    // function displayAdd() {
-    //     if (addActivity) {
-    //         // return (
-    //             // <form onChange={handleChange} onSubmit={handleSubmit}>
-    //             //     <label htmlFor="start">Start time</label>
-    //             //     <input name="start" type="time" defaultValue={formInput.start}/>
-    //             //     <label htmlFor="name">What's the activity?</label>
-    //             //     <input name="name" type="text" defaultValue={formInput.name}/>
-    //             //     <label htmlFor="location">Where is the activity?</label>
-    //             //     <input name="location" type="text" defaultValue={formInput.location}/>
-    //             //     <button type="submit" title="Save"><FaSave/></button>
-    //             // </form>
-    //         // )
-    //     } else {<div></div>}
-    // }
 
     function displayEditButtons() {
         if (props.currentUser && props.currentUser.id === props.trip) {
@@ -129,7 +98,6 @@ export default function DayDetails(props) {
                 )
             }) }
             {showForm ? <button title="Save" onClick={handleEdit}><FaSave/></button> : null}
-            {/* {displayAdd()} */}
             {addActivity ? <CreateActivity id={id} day_id={day_id} setAddActivity={setAddActivity} setToggle={props.setToggle}/> : <div></div>}
             {displayEditButtons()}
             {displayAddButtons()}

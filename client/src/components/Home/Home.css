@@ -8,9 +8,8 @@
 .intro-card {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-content: center;
     text-align: left;
+    padding: 10px;
 }
 
 .intro-card > h4 {
@@ -29,46 +28,7 @@
 
     .intro-card {
         width: 80%;
+        text-align: center;
+        align-self: center;
     }
 }
-
-/* .user-form {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 80px;
-    align-self: center;
-}
-
-.user-form > h1 {
-    color: #C9A81E;
-    text-transform: uppercase;
-}
-.user-form > input[type=email], input[type=password] {
-    width: 50%;
-    margin: 10px;
-    height: 40px;
-    padding: 5px;
-}
-
-.submit-btn {
-    border-radius: 5px;
-}
-
-.create-btn {
-    border-radius: 5px;
-    background-color: #008000;
-}
-
-.create-btn:hover {
-    background-color: #006700;
-}
-@media screen and (max-width: 850px) {
-    .user-form {
-        width: 100%;
-    }
-    .user-form > input[type=email], input[type=password]  {
-        width: 80%;
-    }
-} */

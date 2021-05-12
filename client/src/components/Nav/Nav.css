@@ -9,7 +9,18 @@
     padding: 5px;
 }
 
-.nav > a, .logout > .button {
+.button {
+    padding: 0;
+}
+
+.desktop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.nav > a , .desktop > a, .mobile > a, .logout > .button {
     margin: 15px;
     text-decoration: none;
     text-transform: uppercase;
@@ -17,7 +28,7 @@
     font-size: 1em;
 }
 
-.nav > a:hover, .logout> .button:hover {
+.desktop > a:hover, .mobile > a:hover, .logout> .button:hover {
     color: #C9A81E;
 }
 
@@ -40,12 +51,25 @@
     justify-content: flex-end;
 }
 
+.mobile {
+    display: none;
+}
+
 @media screen and (max-width: 650px) {
     .logo {
         width: 25%; 
     }
-    
-    .nav > a, .logout > .button {
-        font-size: 0.75em;
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: flex;
+        width: 100%;
+    }
+
+    .mobile > a {
+        display: flex;
+        align-items: center;
     }
 }

@@ -33,12 +33,6 @@ function App() {
   return (
     <div className="App">
       <Nav currentUser={currentUser} logout={logout}/>
-      {/* <Route path="/signup">
-        <SignUp/>
-      </Route> */}
-      {/* <Route path="/login">
-        <Login verify={verify}/>
-      </Route> */}
       <Route path="/trips/:id">
         <TripDetails currentUser={currentUser}/>
       </Route>
@@ -50,7 +44,6 @@ function App() {
       </Route>
       <Route exact path="/">
         <Home verify={verify} currentUser={currentUser}/>
-        {/* <Login verify={verify}/> */}
       </Route>
     </div>
   );

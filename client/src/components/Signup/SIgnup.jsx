@@ -16,8 +16,15 @@ export default function SignUp(props) {
     //handle button submit to register user
     async function handleSubmit(event) {
         event.preventDefault()
-        await registerUser(form)
-        props.setToggleForm(prevState => !prevState)
+        let res = await registerUser(form)
+        if (res.errors) {
+            for (const [key, value] of Object.entries(res.errors)) {
+                console.log(`${key}: ${value}`)
+                alert(`${key} ${value}`)
+            }
+        } else {
+            props.setToggleForm(prevState => !prevState)
+        }
     }
     
     return (

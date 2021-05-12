@@ -22,7 +22,7 @@ export default function Login(props) {
         if (res.token) {
             history.push("/trips")
         } else {
-            return false
+            alert("Invalid email and/or password")
         }
     }
 

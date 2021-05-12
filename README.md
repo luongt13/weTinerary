@@ -119,10 +119,10 @@ src
 
 | Task                | Priority | Estimated Time | Time Invested | Actual Time |
 | ------------------- | :------: | :------------: | :-----------: | :---------: |
-| Styling             |    L     |     6      |     4     |    TBD    |
+| Styling             |    L     |     6      |     6     |    TBD    |
 | Build profile       |    H     |     3      |     3     |    TBD    |
-| Signup Form         |    H     |     3      |     2     |    TBD    |
-| Login Form          |    H     |     3      |     2     |    TBD    |
+| Signup Form         |    H     |     3      |     3     |    TBD    |
+| Login Form          |    H     |     3      |     3     |    TBD    |
 | Add Trip Form       |    H     |     3      |     3     |    TBD    |
 | Edit Form           |    H     |     3      |     3     |    TBD    |
 | Delete              |    H     |     3      |     1     |    TBD    |
@@ -160,3 +160,8 @@ TBD
 
 > Use this section to list of all major issues encountered and their resolution.
 TBD
+
+### Resources
+- [Trigram](https://pganalyze.com/blog/similarity-in-postgres-and-ruby-on-rails-using-trigrams)
+- [Trigram](https://pganalyze.com/blog/similarity-in-postgres-and-ruby-on-rails-using-trigrams)
+- [Devise JWT Warden](https://github.com/luongt13/Devise_JWT_Warden)

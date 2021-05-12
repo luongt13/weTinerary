@@ -1,0 +1,33 @@
+/* .intro-container {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    justify-content: center;
+}
+
+.intro-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: left;
+}
+
+.intro-card > h4 {
+    color: white;
+}
+
+.intro-card >h1 {
+    color: #C9A81E;
+}
+
+@media screen and (max-width: 650px) {
+    .intro-container {
+        flex-direction: column;
+        align-content: center;
+    }
+
+    .intro-card {
+        width: 80%;
+    }
+} */

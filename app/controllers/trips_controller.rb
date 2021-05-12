@@ -1,5 +1,5 @@
 class TripsController < ApiController
-    skip_before_action :authenticate_user!, only: [:all_trips, :show]
+    skip_before_action :authenticate_user!, only: [:all_trips, :show, :search]
     before_action :set_trip, only: [:show, :update, :destroy]
 
     #user logged in
@@ -11,6 +11,11 @@ class TripsController < ApiController
     def all_trips
         @trips = Trip.all
         render json: @trips
+    end
+
+    def search 
+        @results = Trip.location_similarity(params[:location])
+        render json: @results
     end
     #show a specific trip
     def show

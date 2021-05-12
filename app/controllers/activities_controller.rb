@@ -8,9 +8,9 @@ class ActivitiesController < ApiController
         render json: @activities
     end
 
-    # def show
-    #     render json: @activity
-    # end
+    def show
+        render json: @activities
+    end
 
     def create
         @day = Day.find(params[:day_id])
@@ -42,6 +42,6 @@ class ActivitiesController < ApiController
     end
 
     def activity_params
-        params.require(:activity).permit(:id, :name, :location)
+        params.require(:activity).permit(:name, :location, :start)
     end
 end

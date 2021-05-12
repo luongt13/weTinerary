@@ -1,0 +1,77 @@
+.trip-layout {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-self: center;
+}
+
+.trip-overview {
+    display: flex;
+    flex-direction: row;
+}
+
+.trip-description {
+    text-align: left;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    margin: 10px 10px 10px 0;
+    width: 200px;
+    border-radius: 5px;
+    height: 10%;
+}
+
+.trip-description > h1{
+    text-transform: uppercase;
+    margin-top: 0;
+    font-size: 1.5rem;
+    word-wrap: break-word;
+}
+
+.day-list {
+    flex-grow: 1;
+}
+
+.day-item {
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    margin: 10px 10px 20px 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.day {
+    margin: 10px;
+}
+
+.day-details {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.add-button {
+    align-self: flex-end;
+    position: fixed;
+    margin: 0 5px 5px 0;
+    bottom: 0;
+    right: 0;
+}
+
+.add {
+    background-color: black;
+    border-radius: 50%;
+    padding: 20px;
+}
+
+@media screen and (max-width: 650px) {
+    .trip-overview {
+        flex-direction: column;
+    }
+
+    .trip-description {
+        width: auto;
+    }
+}

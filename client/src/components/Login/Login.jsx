@@ -1,11 +1,11 @@
 import {useState} from 'react'
 import {loginUser} from "../../services/auth"
-import {useHistory, Link} from "react-router-dom"
+// import {useHistory} from "react-router-dom"
 import "./Login.css"
 
 export default function Login(props) {
     const [form, setForm] = useState({})
-    let history = useHistory()
+    // let history = useHistory()
     function handleChange(event) {
         let {name, value} = event.target
         setForm((prevState) => ({
@@ -18,21 +18,22 @@ export default function Login(props) {
         event.preventDefault()
         await loginUser(form)
         props.verify()
-        history.push("/")
     }
     return (
-    <div className="intro-container">
-        <div className="intro-card">
-            <h1>weTinerary</h1>
-            <h4>share your itinerary and get inspirations for your next adventure</h4>
-        </div>
+    // <div className="intro-container">
+    //     <div className="intro-card">
+    //         <h1>weTinerary</h1>
+    //         <h4>share your itinerary and get inspirations for your next adventure</h4>
+    //         <Link to="/trips"><button className="create-btn">Get Inspired</button></Link>
+    //     </div>
         <form className="user-form" onChange={handleChange} onSubmit={handleSubmit}>
             <h1>Login</h1>
             <input name="email" type="email" placeholder="email" defaultValue={form.email}/>
             <input name="password" type="password" placeholder="password" defaultValue={form.password}/>
             <button type="submit" className="submit-btn">Login</button>
-            <Link to="/signup"><button className="create-btn">Create Account</button></Link>
+            {/* <Link to="/signup"><button className="create-btn">Create Account</button></Link> */}
+            <button className="create-btn" onClick={() => props.setToggleForm(prevState => !prevState)}>Create Account</button>
         </form>
-    </div>
+    // </div>
     )
 }

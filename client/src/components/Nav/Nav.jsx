@@ -10,7 +10,7 @@ export default function Nav(props) {
             return (
             <div className="nav">
                 <img src="/images/wet-logo.png" className="logo" alt="wetinerary logo"/>
-                <Link to="/">All Trips</Link>
+                <Link to="/trips">All Trips</Link>
                 <Link to={`/my-trips/${props.currentUser.id}`}>My Trips</Link>
                 <div className="logout">
                 <button className="button" onClick={props.logout}> <RiLogoutBoxRLine/>Logout</button>
@@ -21,10 +21,10 @@ export default function Nav(props) {
             return (
             <div className="nav">
                 <img src="/images/wet-logo.png" className="logo" alt="wetinerary logo"/>
-                <Link to="/">All Trips</Link>
+                {/* <Link to="/">All Trips</Link> */}
                 <div className="nav forms">
-                    <Link to="/signup">Sign Up</Link>
-                    <Link to="/login">Login</Link>
+                    {/* <Link to="/">Sign Up</Link> */}
+                    <Link to="/">Login/Sign up</Link>
                 </div>
 
             </div>

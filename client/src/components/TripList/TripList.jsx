@@ -4,7 +4,7 @@ import {Link, useParams} from "react-router-dom"
 import {deleteATrip, getAllTrips} from "../../services/trips"
 import {getUserTrips} from "../../services/trips"
 import CreateTrip from '../CreateTrip/CreateTrip'
-import AddButtons from "../AddButtons/AddButtons"
+import AddButtons from "../AddButtons/AddButtons.jsx"
 import Search from "../Search/Search"
 
 import "./TripList.css"
@@ -42,12 +42,11 @@ export default function TripList(props) {
     <>
         <div div className="page-intro">
             <h1>weTinerary</h1>
-            <h4>get inspirations for your next adventure</h4>
+            {id ? <h4>share your next adventure</h4> : <h4>get inspirations for your next adventure</h4>}
             <div className="search-bar">
                 {id ? null : <Search setFilteredTrips={setFilteredTrips}/>}    
             </div>
         </div>
-
         <div className="search-list">
             {filteredTrips && filteredTrips.map((trip) => {
                     return (

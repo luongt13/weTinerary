@@ -6,7 +6,7 @@ import "./Edit.css"
 export default function Form(props) {
     let {id, day_id} = props.activity
     let params = useParams()
-
+    //handle delete activity
     async function handleDelete(e) {
         e.preventDefault()
         await deleteActivity(params.id, day_id, id)

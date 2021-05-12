@@ -3,6 +3,7 @@ import {MdRemoveCircleOutline} from "react-icons/md"
 import {deleteADay} from "../../services/days"
 
 export default function DeleteDay(props) {
+    //handle delete day
     async function handleDelete(){
         await deleteADay(props.trip_id, props.day_id)
         props.setToggle(prevState => !prevState)

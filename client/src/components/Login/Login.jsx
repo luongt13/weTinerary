@@ -6,6 +6,7 @@ import "./Login.css"
 export default function Login(props) {
     const [form, setForm] = useState({})
     let history = useHistory()
+    //handle form change
     function handleChange(event) {
         let {name, value} = event.target
         setForm((prevState) => ({
@@ -13,7 +14,7 @@ export default function Login(props) {
             [name]: value
         }))
     }
-
+    //handle login 
     async function handleSubmit(event) {
         event.preventDefault()
         let res = await loginUser(form)
@@ -26,21 +27,12 @@ export default function Login(props) {
     }
 
     return (
-        
-    // <div className="intro-container">
-    //     <div className="intro-card">
-    //         <h1>weTinerary</h1>
-    //         <h4>share your itinerary and get inspirations for your next adventure</h4>
-    //         <Link to="/trips"><button className="create-btn">Get Inspired</button></Link>
-    //     </div>
     <div className="form-layout">
         <form className="user-form" onChange={handleChange} onSubmit={handleSubmit}>
             <h1>Login</h1>
             <input name="email" type="email" placeholder="email" defaultValue={form.email}/>
             <input name="password" type="password" placeholder="password" defaultValue={form.password}/>
-            <button type="submit" className="submit-btn">Login</button>
-            {/* <Link to="/signup"><button className="create-btn">Create Account</button></Link> */}
-            
+            <button type="submit" className="submit-btn">Login</button>            
         </form>
         <button className="create-btn" onClick={() => props.setToggleForm(prevState => !prevState)}>Create Account</button>
     </div>

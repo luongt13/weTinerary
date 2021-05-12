@@ -9,7 +9,7 @@ export default function CreateDay(props) {
     const [tripDay, setTripDay] = useState({})
     const [activityForm, setActivityForm] = useState({})
     let {id} = useParams()
-
+    //set the day of the trip
     function handleDay(event) {
         let {name, value} = event.target
         setTripDay(prevState => ({
@@ -17,6 +17,7 @@ export default function CreateDay(props) {
             [name]: value
         }))
     }
+    //set the activity information
     function handleChange(event) {
         let {name, value} = event.target
         setActivityForm((prevState) => ({
@@ -24,7 +25,7 @@ export default function CreateDay(props) {
             [name]: value
         }))
     }
-
+    //create the day
     async function handleSubmit(event) {
         event.preventDefault()
         let form = {
@@ -36,9 +37,7 @@ export default function CreateDay(props) {
         props.setToggle(prevState => !prevState)
         props.setCreateForm(prevState => !prevState)
     }
-    function showActivityForm() {
-        setShowForm(prevState => !prevState)
-    }
+
     return (
     <div className="container">
         <form onChange={handleDay}>
@@ -47,13 +46,10 @@ export default function CreateDay(props) {
         </form>
         <form onChange={handleChange} onSubmit={handleSubmit}>
             <h4>Add An Activity</h4>
-            {/* <label htmlFor="start">start time</label> */}
             <input name="start" type="time" defaultValue={activityForm.start}/>
             <input name="name" type="text" placeholder="Enter activity name" defaultValue={activityForm.name}/>
             <input name="location" type="text" placeholder="Enter location" defaultValue={activityForm.location}/>
-            {showForm ? 
-                <button onClick={showActivityForm}>Add Activity</button>
-                : <button type="submit" title="Save"><FaSave/></button>}
+            {showForm ? <button onClick={() => setShowForm(prevState => !prevState)}>Add Activity</button> : <button type="submit" title="Save"><FaSave/></button>}
         </form>
     </div>
     )

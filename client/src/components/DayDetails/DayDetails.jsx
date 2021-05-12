@@ -3,7 +3,8 @@ import {MdCancel, MdEdit} from "react-icons/md"
 import {TiPlus} from "react-icons/ti"
 import {FaSave} from "react-icons/fa"
 import Edit from "../Edit/Edit.jsx"
-import {createActivity} from "../../services/activities"
+// import {createActivity} from "../../services/activities"
+import CreateActivity from "../CreateActivity/CreateActivity.jsx"
 import {useParams} from "react-router-dom"
 import {updateADay} from "../../services/days"
 import "./DayDetails.css"
@@ -12,22 +13,27 @@ export default function DayDetails(props) {
     const [activities, setActivities] = useState(props.activities)
     const [showForm, setShowForm] = useState(false)
     const [addActivity, setAddActivity] = useState(false)
-    const [formInput, setFormInput] = useState({})
+    // const [formInput, setFormInput] = useState({})
     let day_id = props.activities[0].day_id
     let {id} = useParams()
-
+    //set activities for that day
     useEffect(() => {
-        setActivities(props.activities)
+        setUpdated()
+        return () => {}
+        // eslint-disable-next-line
     }, [props.activities])
 
-    function handleChange(event) {
-        let {name, value} = event.target
-        setFormInput((prevState) => ({
-            ...prevState,
-            [name]: value
-        }))
+    function setUpdated() {
+        setActivities(props.activities)
     }
-
+    // function handleChange(event) {
+    //     let {name, value} = event.target
+    //     setFormInput((prevState) => ({
+    //         ...prevState,
+    //         [name]: value
+    //     }))
+    // }
+    //handle edit changes for the activities
     function handleEditChange(event, id) {
         let {name, value} = event.target
         let updatedActivities = [...activities]
@@ -43,36 +49,36 @@ export default function DayDetails(props) {
         })
         setActivities(updatedActivities)
     }
-
+    //handle submit for edit form for activities
     async function handleEdit() {
         await updateADay(id, day_id, {activities_attributes: activities})
         setShowForm(prevState => !prevState)
         props.setToggle(prevState => !prevState)
     }
 
-    async function handleSubmit(event){
-        event.preventDefault()
-        await createActivity(id, day_id, formInput)
-        setAddActivity(prevState => !prevState)
-        props.setToggle(prevState => !prevState)
-        setFormInput("")
-    }
+    // async function handleSubmit(event){
+    //     event.preventDefault()
+    //     await createActivity(id, day_id, formInput)
+    //     setAddActivity(prevState => !prevState)
+    //     props.setToggle(prevState => !prevState)
+    //     setFormInput("")
+    // }
 
-    function displayAdd() {
-        if (addActivity) {
-            return (
-                <form onChange={handleChange} onSubmit={handleSubmit}>
-                    <label htmlFor="start">Start time</label>
-                    <input name="start" type="time" defaultValue={formInput.start}/>
-                    <label htmlFor="name">What's the activity?</label>
-                    <input name="name" type="text" defaultValue={formInput.name}/>
-                    <label htmlFor="location">Where is the activity?</label>
-                    <input name="location" type="text" defaultValue={formInput.location}/>
-                    <button type="submit" title="Save"><FaSave/></button>
-                </form>
-            )
-        } else {<div></div>}
-    }
+    // function displayAdd() {
+    //     if (addActivity) {
+    //         // return (
+    //             // <form onChange={handleChange} onSubmit={handleSubmit}>
+    //             //     <label htmlFor="start">Start time</label>
+    //             //     <input name="start" type="time" defaultValue={formInput.start}/>
+    //             //     <label htmlFor="name">What's the activity?</label>
+    //             //     <input name="name" type="text" defaultValue={formInput.name}/>
+    //             //     <label htmlFor="location">Where is the activity?</label>
+    //             //     <input name="location" type="text" defaultValue={formInput.location}/>
+    //             //     <button type="submit" title="Save"><FaSave/></button>
+    //             // </form>
+    //         // )
+    //     } else {<div></div>}
+    // }
 
     function displayEditButtons() {
         if (props.currentUser && props.currentUser.id === props.trip) {
@@ -122,8 +128,9 @@ export default function DayDetails(props) {
                     </div>
                 )
             }) }
-                {showForm ? <button title="Save" onClick={handleEdit}><FaSave/></button> : null}
-            {displayAdd()}
+            {showForm ? <button title="Save" onClick={handleEdit}><FaSave/></button> : null}
+            {/* {displayAdd()} */}
+            {addActivity ? <CreateActivity id={id} day_id={day_id} setAddActivity={setAddActivity} setToggle={props.setToggle}/> : <div></div>}
             {displayEditButtons()}
             {displayAddButtons()}
         </div>

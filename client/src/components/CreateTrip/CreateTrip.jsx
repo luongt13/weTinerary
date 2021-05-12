@@ -8,7 +8,7 @@ export default function CreateTrip() {
     const [form, setForm] = useState({})
 
     let history = useHistory()
-
+    //handle change in the form
     function handleChange(event) {
         let {name, value} = event.target
         setForm((prevState) => ({
@@ -16,7 +16,7 @@ export default function CreateTrip() {
             [name]: value
         }))
     }
-
+    //handle create a trip and redirect to the trip page
     async function handleSubmit(event) {
         event.preventDefault()
         let data = await createATrip(form)

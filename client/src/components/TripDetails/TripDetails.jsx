@@ -43,6 +43,7 @@ export default function TripDetails(props) {
             [name]: value
         }))
     }
+    //handle updating trip details
     async function handleSubmit(event) {
         event.preventDefault()
         await updateATrip(id, trip)
@@ -52,6 +53,7 @@ export default function TripDetails(props) {
 
     function displayDetails() {
         if (trip) {
+              //if there is a trip and edit trip, show edit form
             if (editTrip && trip) {
                 return (
                 <div className="trip-description">
@@ -64,6 +66,7 @@ export default function TripDetails(props) {
                 </div>
                 )
             } else {
+                //else show details with edit button
                 if(props.currentUser && trip.user_id === props.currentUser.id) {
                     return (
                     <div className="trip-description">
@@ -73,7 +76,7 @@ export default function TripDetails(props) {
                         <button onClick={() => setEditTrip(prevState => !prevState)} title="Edit Trip Information"><MdEdit/></button>
                     </div>
                     )
-                    
+                //if it's not the users trip then just show the details
                 } else {
                     return (
                     <div className="trip-description">

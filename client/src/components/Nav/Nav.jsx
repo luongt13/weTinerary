@@ -21,9 +21,7 @@ export default function Nav(props) {
             return (
             <div className="nav">
                 <img src="/images/wet-logo.png" className="logo" alt="wetinerary logo"/>
-                {/* <Link to="/">All Trips</Link> */}
                 <div className="nav forms">
-                    {/* <Link to="/">Sign Up</Link> */}
                     <Link to="/">Login/Sign up</Link>
                 </div>
 
@@ -33,7 +31,7 @@ export default function Nav(props) {
     } 
     return (
     <>
-        {displayNav()}
+    {displayNav()}
     </>
     )
 }

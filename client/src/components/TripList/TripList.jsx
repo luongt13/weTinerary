@@ -13,8 +13,6 @@ export default function TripList(props) {
     const [trips, setTrips] = useState([])
     const [createForm, setCreateForm] = useState(false)
     const [toggle, setToggle] = useState(false)
-
-    // const [searchTerm, setSearchTerm] = useState("")
     const [filteredTrips, setFilteredTrips] = useState([])
     let {id} = useParams()
 

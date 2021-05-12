@@ -14,6 +14,7 @@ export default function TripList(props) {
     const [createForm, setCreateForm] = useState(false)
     const [toggle, setToggle] = useState(false)
     const [filteredTrips, setFilteredTrips] = useState([])
+    const [searchTerm, setSearchTerm] = useState("")
     let {id} = useParams()
 
     useEffect(() => {
@@ -37,40 +38,49 @@ export default function TripList(props) {
         await deleteATrip(event.target.value)
         setToggle(prevState => !prevState)
     }
-    return (
-    <>
-        <div className="page-intro">
-            <h1>weTinerary</h1>
-            {id ? <h4>share your next adventure</h4> : <h4>get inspirations for your next adventure</h4>}
-            <div className="search-bar">
-                {id ? <div></div> : <Search setFilteredTrips={setFilteredTrips}/>}    
-            </div>
-        </div>
-        <div className="search-list">
-            {filteredTrips && filteredTrips.map((trip) => {
+
+    function displayList() {
+        if (searchTerm.length > 2 && filteredTrips) {
+            return (
+                filteredTrips.map((trip) => {
                     return (
-                        <div className="search-item" key={trip.id}>
+                        <div className="trip-item" key={trip.id}>
                             <Link to={`/trips/${trip.id}`} className="item">
                                 <h3>{trip.name}</h3>
                                 <h5>{trip.location}</h5>
                             </Link>
                         </div>
                     )
-                })}
+                })
+            )
+        } else if (trips) {
+            return (
+                trips.map((trip)=> {
+                    return (
+                        <div key={trip.id} className="trip-item">
+                            {id ? <button onClick={handleDelete} value={trip.id} title="Delete"><MdRemoveCircleOutline value={trip.id}/></button> : null}
+                            <Link to={`/trips/${trip.id}`} className="item">
+                                <h3>{trip.name}</h3>
+                                <h5>{trip.location}</h5>
+                                <p>{trip.description}</p>
+                            </Link>
+                        </div>
+                    )
+                })
+            )
+        }
+    }
+    return (
+    <>
+        <div className="page-intro">
+            <h1>weTinerary</h1>
+            {id ? <h4>share your next adventure</h4> : <h4>get inspirations for your next adventure</h4>}
+            <div className="search-bar">
+                {id ? <div></div> : <Search setFilteredTrips={setFilteredTrips} setSearchTerm={setSearchTerm} searchTerm={searchTerm}/>}    
+            </div>
         </div>
         <div className="trip-list">
-            {trips.map((trip)=> {
-                return (
-                    <div key={trip.id} className="trip-item">
-                        {id ? <button onClick={handleDelete} value={trip.id} title="Delete"><MdRemoveCircleOutline value={trip.id}/></button> : null}
-                        <Link to={`/trips/${trip.id}`} className="item">
-                            <h3>{trip.name}</h3>
-                            <h5>{trip.location}</h5>
-                            <p>{trip.description}</p>
-                        </Link>
-                    </div>
-                )
-            })}
+            {displayList()}
         </div>
         <div className="add-button">
             {createForm ? <CreateTrip/> : null}

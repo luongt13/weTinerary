@@ -159,7 +159,22 @@ TBD
 ## Code Issues & Resolutions
 
 > Use this section to list of all major issues encountered and their resolution.
-TBD
+
+```javascript
+
+async function fetch() {
+        if (!id) {
+            let data = await getAllTrips()
+            setTrips(data)
+        } else if (props.currentUser) {
+            let data = await getUserTrips()
+            setTrips(data)
+        } 
+    }
+```
+issue: reuse trip list for all trips and specific user trips
+resolution: conditional 
+
 
 ### Resources
 - [Trigram](https://pganalyze.com/blog/similarity-in-postgres-and-ruby-on-rails-using-trigrams)

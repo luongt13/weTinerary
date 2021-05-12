@@ -8,7 +8,7 @@
     margin-top: 0;;
 }
 
-.search-list {
+/* .search-list {
     width: 80%;
     align-self: center;
 }
@@ -18,14 +18,14 @@
     border: 2px solid black;
     border-radius: 5px;
     margin-top: 5px;
-}
+} */
 
-.search-item > a {
+/* .search-item > a {
     align-items: center;
     display: flex;
     justify-content: space-between;
     padding: 10px;
-}
+} */
 
 .trip-list {
     display: flex;

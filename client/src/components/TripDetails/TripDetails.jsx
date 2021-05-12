@@ -66,26 +66,16 @@ export default function TripDetails(props) {
                 </div>
                 )
             } else {
-                //else show details with edit button
-                if(props.currentUser && trip.user_id === props.currentUser.id) {
-                    return (
+                return (
                     <div className="trip-description">
                         <h1>{trip.name}</h1>
                         <h3>{trip.location}</h3>
                         <p>{trip.description}</p>
+                        {props.currentUser && trip.user_id === props.currentUser.id ? 
                         <button onClick={() => setEditTrip(prevState => !prevState)} title="Edit Trip Information"><MdEdit/></button>
+                        : <div></div>}
                     </div>
                     )
-                //if it's not the users trip then just show the details
-                } else {
-                    return (
-                    <div className="trip-description">
-                        <h1>{trip.name}</h1>
-                        <h3>{trip.location}</h3>
-                        <p>{trip.description}</p>
-                    </div>
-                    )   
-                }
             }
         } else {
             <div></div>
@@ -111,8 +101,7 @@ export default function TripDetails(props) {
         </div>
         <div className="add-button">
             {createForm ? <CreateDay setCreateForm={setCreateForm} setToggle={setToggle}/> : null}
-            {trip && props.currentUser && props.currentUser.id === trip.user_id ? 
-            <AddButtons setCreateForm={setCreateForm} createForm={createForm}/> : null} 
+            {trip && props.currentUser && props.currentUser.id === trip.user_id ? <AddButtons setCreateForm={setCreateForm} createForm={createForm}/> : null} 
         </div>
     </div>
     )

@@ -8,31 +8,13 @@
     margin-top: 0;;
 }
 
-.search-list {
-    width: 80%;
-    align-self: center;
-}
-
-.search-item {
-    background-color: white;
-    border: 2px solid black;
-    border-radius: 5px;
-    margin-top: 5px;
-}
-
-.search-item > a {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-}
-
 .trip-list {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: flex-start;
 }
+
 .trip-item {
     width: 21%;
     margin: 15px;
@@ -43,9 +25,6 @@
     border: 2px solid black;
 }
 
-.search-item > a > h3, .search-item > a > h5, .search-item > a > p {
-    margin: 0 5px 0 5px;
-}
 .item {
     text-decoration: none;
 }

@@ -13,6 +13,7 @@ export default function SignUp(props) {
             [name]: value
         }))
     }
+    console.log(form)
     //handle button submit to register user
     async function handleSubmit(event) {
         event.preventDefault()

@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import {Link} from "react-router-dom"
 import Login from "../Login/Login.jsx"
-import Signup from "../SignUp/Signup.jsx"
+import Signup from "../Signup/Signup.jsx"
 import "./Home.css"
 
 export default function Home(props) {

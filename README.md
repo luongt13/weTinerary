@@ -1,5 +1,7 @@
 # weTinerary
 
+![screen recording](./assets/wetinerary.gif)
+
 - [Overview](#overview)
 - [MVP](#mvp)
   - [Goals](#goals)

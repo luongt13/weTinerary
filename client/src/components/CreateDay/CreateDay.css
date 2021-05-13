@@ -1,4 +1,22 @@
 .container {
     background-color: lightgray;
+    color: white;
     border-radius: 5px;
+    width: 50%;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    transition: opacity 500ms;
+}
+
+.container > form {
+    align-items: center;
+}
+
+@media screen and (max-width: 650px) { 
+    .container {
+        width: 80%;
+    }
+    
 }

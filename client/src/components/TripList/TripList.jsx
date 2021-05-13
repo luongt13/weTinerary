@@ -80,9 +80,13 @@ export default function TripList(props) {
         <div className="trip-list">
             {displayList()}
         </div>
-        <div className="add-button">
+        <div>
+            <div className="add-form">
             {createForm ? <CreateTrip/> : null}
-            {id ? <AddButtons createForm={createForm} setCreateForm={setCreateForm}/>: null} 
+            </div>
+            <div className="add-button">
+                {id ? <AddButtons createForm={createForm} setCreateForm={setCreateForm}/>: null} 
+            </div>
         </div>
     </>
     )

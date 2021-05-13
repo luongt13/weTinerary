@@ -98,9 +98,13 @@ export default function TripDetails(props) {
             })}
             </div>
         </div>
-        <div className="add-button">
-            {createForm ? <CreateDay setCreateForm={setCreateForm} setToggle={setToggle}/> : null}
-            {trip && props.currentUser && props.currentUser.id === trip.user_id ? <AddButtons setCreateForm={setCreateForm} createForm={createForm}/> : null} 
+        <div>
+            <div className="add-form">
+                {createForm ? <CreateDay setCreateForm={setCreateForm} setToggle={setToggle}/> : null}
+            </div>
+            <div className="add-button">
+                {trip && props.currentUser && props.currentUser.id === trip.user_id ? <AddButtons setCreateForm={setCreateForm} createForm={createForm}/> : null} 
+            </div>
         </div>
     </div>
     )

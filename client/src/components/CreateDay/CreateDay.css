@@ -5,7 +5,7 @@
     width: 50%;
     align-items: center;
     position: fixed;
-    bottom: 0;
+    bottom: 30px;
     background: rgba(0, 0, 0, 0.9);
 }
 
@@ -17,5 +17,4 @@
     .container {
         width: 80%;
     }
-    
 }

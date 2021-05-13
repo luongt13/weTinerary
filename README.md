@@ -135,7 +135,7 @@ src
 
 #### ERD Model
 
-![ERD Sample](./assets/weTinerary.png)
+![ERD Sample](./assets/wetinerary-ERD.png)
 <br>
 
 ***

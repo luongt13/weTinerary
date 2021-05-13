@@ -3,7 +3,6 @@ import {MdCancel, MdEdit} from "react-icons/md"
 import {TiPlus} from "react-icons/ti"
 import {FaSave} from "react-icons/fa"
 import Edit from "../Edit/Edit.jsx"
-// import {createActivity} from "../../services/activities"
 import CreateActivity from "../CreateActivity/CreateActivity.jsx"
 import {useParams} from "react-router-dom"
 import {updateADay} from "../../services/days"
@@ -13,7 +12,6 @@ export default function DayDetails(props) {
     const [activities, setActivities] = useState(props.activities)
     const [showForm, setShowForm] = useState(false)
     const [addActivity, setAddActivity] = useState(false)
-    // const [formInput, setFormInput] = useState({})
     let day_id = props.activities[0].day_id
     let {id} = useParams()
     //set activities for that day

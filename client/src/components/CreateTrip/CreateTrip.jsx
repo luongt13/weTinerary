@@ -2,7 +2,6 @@ import {useState} from 'react'
 import {FaSave} from "react-icons/fa"
 import {useHistory} from "react-router-dom"
 import {createATrip} from "../../services/trips"
-import "./CreateTrip.css"
 
 export default function CreateTrip() {
     const [form, setForm] = useState({})

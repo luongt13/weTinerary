@@ -6,7 +6,6 @@ form {
 }
 
 input[type=text], input[type=number], input[type=time] {
-    /* background-color: #D1F2EB; */
     border: none;
     margin: 10px 0 10px 0;
     padding: 10px;

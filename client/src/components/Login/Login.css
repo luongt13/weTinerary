@@ -35,6 +35,7 @@
 .create-btn:hover {
     background-color: #006700;
 }
+
 @media screen and (max-width: 850px) {
     .form-layout {
         width: 100%;

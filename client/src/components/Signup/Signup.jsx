@@ -1,6 +1,5 @@
 import {useState} from 'react'
 import {registerUser} from "../../services/auth"
-import "./Signup.css"
 
 export default function SignUp(props) {
     //set state for form 

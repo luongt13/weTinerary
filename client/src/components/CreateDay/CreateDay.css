@@ -7,7 +7,6 @@
     position: fixed;
     bottom: 0;
     background: rgba(0, 0, 0, 0.9);
-    transition: opacity 500ms;
 }
 
 .container > form {

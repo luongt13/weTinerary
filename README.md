@@ -119,15 +119,15 @@ src
 
 | Task                | Priority | Estimated Time | Time Invested | Actual Time |
 | ------------------- | :------: | :------------: | :-----------: | :---------: |
-| Styling             |    L     |     6      |     6     |    TBD    |
-| Build profile       |    H     |     3      |     3     |    TBD    |
-| Signup Form         |    H     |     3      |     3     |    TBD    |
-| Login Form          |    H     |     3      |     3     |    TBD    |
-| Add Trip Form       |    H     |     3      |     3     |    TBD    |
-| Edit Form           |    H     |     3      |     3     |    TBD    |
-| Delete              |    H     |     3      |     1     |    TBD    |
-| Build CRUD Actions  |    H     |     6      |     5     |    TBD    |
-| TOTAL               |          |     30     |     TBD     |    TBD    |
+| Styling             |    L     |     6      |     6     |    6    |
+| Build profile       |    H     |     3      |     3     |    3    |
+| Signup Form         |    H     |     3      |     3     |    3    |
+| Login Form          |    H     |     3      |     3     |    3    |
+| Add Trip Form       |    H     |     3      |     3     |    3    |
+| Edit Form           |    H     |     3      |     3     |    3    |
+| Delete              |    H     |     3      |     1     |    1    |
+| Build CRUD Actions  |    H     |     6      |     5     |    5    |
+| TOTAL               |          |     30     |     27     |    27    |
 
 <br>
 

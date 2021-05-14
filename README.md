@@ -1,6 +1,6 @@
 # weTinerary
 
-![screen recording](./assets/wetinerary.gif)
+![screen recording](./assets/we-tinerary.gif)
 
 - [Overview](#overview)
 - [MVP](#mvp)
